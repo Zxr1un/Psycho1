@@ -1,49 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|d:\\2_sem\\puchur\\tests\\psycho1\\psychoat\\test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|c:\\users\\user\\desktop\\psihology\\gitsql entering\\psycho1\\psychoat\\test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test_start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|d:\\2_sem\\puchur\\tests\\psycho1\\psychoat\\test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:start.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\statistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\statistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:statistics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:test_choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{66BBBFBB-CD9E-40EB-8609-9BB3BFC676FC}|PsychoAT.csproj|solutionrelative:result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -54,27 +54,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 135,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Test_Start.cs",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_Start.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_Start.cs",
               "RelativeDocumentMoniker": "Test_Start.cs",
-              "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_Start.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_Start.cs",
               "RelativeToolTip": "Test_Start.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -85,135 +77,109 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "Result.cs",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Result.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Result.cs",
               "RelativeDocumentMoniker": "Result.cs",
-              "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Result.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Result.cs",
               "RelativeToolTip": "Result.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-09T07:16:14.463Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-09T07:16:14.463Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Test_choice.cs",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_choice.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_choice.cs",
               "RelativeDocumentMoniker": "Test_choice.cs",
-              "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_choice.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_choice.cs",
               "RelativeToolTip": "Test_choice.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwCsAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-09T07:13:37.957Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-09T07:13:37.957Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-09T05:24:53.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-09T05:24:53.939Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Statistics.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Statistics.cs",
               "RelativeDocumentMoniker": "Statistics.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Statistics.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:05:58.703Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:05:58.703Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Test_choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_choice.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_choice.cs",
               "RelativeDocumentMoniker": "Test_choice.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Test_choice.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:06:27.845Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:06:27.845Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test.cs",
               "RelativeDocumentMoniker": "Test.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Test.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:04:18.714Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:04:18.714Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Test_Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_Start.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Test_Start.cs",
               "RelativeDocumentMoniker": "Test_Start.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Test_Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Test_Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:04:05.21Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:04:05.21Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Start.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Start.cs",
               "RelativeDocumentMoniker": "Start.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Start.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:05:25.733Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:05:25.733Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Result.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Result.cs",
               "RelativeDocumentMoniker": "Result.cs",
               "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
-              "RelativeToolTip": "Result.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T16:04:32.309Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-09-03T16:04:32.309Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Start.cs",
-              "DocumentMoniker": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Start.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Start.cs",
               "RelativeDocumentMoniker": "Start.cs",
-              "ToolTip": "D:\\2_sem\\PUCHUR\\Tests\\Psycho1\\PsychoAT\\Start.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\Psihology\\GitSQL entering\\Psycho1\\PsychoAT\\Start.cs",
               "RelativeToolTip": "Start.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAQwCYAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T17:10:31.225Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 127,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2025-09-07T17:10:31.225Z"
             }
           ]
         }
