@@ -1,0 +1,493 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Data.SQLite</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.SQLite.LogEventArgs">
+            <summary>
+            Event data for logging event handlers.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.LogEventArgs.ErrorCode">
+            <summary>
+            The error code.  The type of this object value should be
+            <see cref="T:System.Int32" /> or <see cref="T:System.Data.SQLite.SQLiteErrorCode" />.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.LogEventArgs.Message">
+            <summary>
+            SQL statement text as the statement first begins executing
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.LogEventArgs.Data">
+            <summary>
+            Extra data associated with this event, if any.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.LogEventArgs.#ctor(System.IntPtr,System.Object,System.String,System.Object)">
+            <summary>
+            Constructs the object.
+            </summary>
+            <param name="pUserData">Should be null.</param>
+            <param name="errorCode">
+            The error code.  The type of this object value should be
+            <see cref="T:System.Int32" /> or <see cref="T:System.Data.SQLite.SQLiteErrorCode" />.
+            </param>
+            <param name="message">The error message, if any.</param>
+            <param name="data">The extra data, if any.</param>
+        </member>
+        <member name="T:System.Data.SQLite.ModuleInitializer">
+            <summary>
+            Performs custom module initialization
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.None">
+            <summary>
+            Not used
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.Integer">
+            <summary>
+            All integers in SQLite default to Int64
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.Double">
+            <summary>
+            All floating point numbers in SQLite default to double
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.Text">
+            <summary>
+            The default data type of SQLite is text
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.Blob">
+            <summary>
+            Typically blob types are only seen when returned from a function
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteColumnType.Null">
+            <summary>
+            Null types can be returned from functions
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteConnection.BackupDatabase(System.Data.SQLite.SQLiteConnection,System.String,System.String,System.Int32,System.Data.SQLite.SQLiteBackupCallback,System.Int32)">
+            <summary>Backs up the database, using the specified database connection as the destination.</summary>
+            <param name="destination">The destination database connection.</param>
+            <param name="destinationName">The destination database name (usually <c>"main"</c>).</param>
+            <param name="sourceName">The source database name (usually <c>"main"</c>).</param>
+            <param name="pages">The number of pages to copy, or negative to copy all remaining pages.</param>
+            <param name="callback">The method to invoke between each step of the backup process.  This
+            parameter may be <c>null</c> (i.e., no callbacks will be performed).</param>
+            <param name="retryMilliseconds">The number of milliseconds to sleep after encountering a locking error
+            during the backup process.  A value less than zero means that no sleep should be performed.</param>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteBackupCallback">
+            <summary>
+            Raised between each backup step.
+            </summary>
+            <param name="source">The source database connection.</param>
+            <param name="sourceName">The source database name.</param>
+            <param name="destination">The destination database connection.</param>
+            <param name="destinationName">The destination database name.</param>
+            <param name="pages">The number of pages copied with each step.</param>
+            <param name="remainingPages">The number of pages remaining to be copied.</param>
+            <param name="totalPages">The total number of pages in the source database.</param>
+            <param name="retry">Set to true if the operation needs to be retried due to database locking issues; otherwise, set to false.</param>
+            <returns><c>true</c> to continue with the backup process; otherwise  <c>false</c> to halt the backup process, rolling back any changes that have been made so far.</returns>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.CacheSize">
+            <summary>
+            Gets/Sets the cache size for the connection.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.DataSource">
+            <summary>
+            Gets/Sets the filename to open on the connection string.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.DefaultTimeout">
+            <summary>
+            Gets/sets the default command timeout for newly-created commands.  This is especially useful for 
+            commands used internally such as inside a SQLiteTransaction, where setting the timeout is not possible.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.ForeignKeys">
+            <summary>
+            If enabled, use foreign key constraints
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.FailIfMissing">
+            <summary>
+            If set to true, will throw an exception if the database specified in the connection
+            string does not exist.  If false, the database will be created automatically.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.JournalMode">
+            <summary>
+            Determines how SQLite handles the transaction journal file.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.MmapSize">
+            <summary>
+            Gets/sets the maximum size of memory-mapped I/O for this connection.
+            </summary>
+            <remarks>See <a href="http://www.sqlite.org/mmap.html">Memory-Mapped I/O</a>.</remarks>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.PageSize">
+            <summary>
+            Gets/Sets the page size for the connection.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.Password">
+            <summary>
+            Gets/sets the database encryption password
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.ReadOnly">
+            <summary>
+            When enabled, the database will be opened for read-only access and writing will be disabled.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.SyncMode">
+            <summary>
+            Gets/Sets the synchronization mode (file flushing) of the connection string.  Default is "Normal".
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.TempStore">
+            <summary>
+            Gets/sets the storage location for temporary tables and indices. Default is "Default".
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.JournalSizeLimit">
+            <summary>
+            Gets/sets the maximum size of rollback-journal and/or WAL files left after transactions or checkpoints.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.SQLiteConnectionStringBuilder.PersistWal">
+            <summary>
+            If set to true, the -shm and -wal files are not automatically deleted.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteJournalModeEnum">
+             <summary>
+             This enum determines how SQLite treats its journal file.
+             </summary>
+             <remarks>
+             By default SQLite will create and delete the journal file when needed during a transaction.
+             However, for some computers running certain filesystem monitoring tools, the rapid
+             creation and deletion of the journal file can cause those programs to fail, or to interfere with SQLite.
+            
+             If a program or virus scanner is interfering with SQLite's journal file, you may receive errors like "unable to open database file"
+             when starting a transaction.  If this is happening, you may want to change the default journal mode to Persist.
+             </remarks>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Default">
+            <summary>
+            The default mode, this causes SQLite to use the existing journaling mode for the database.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Delete">
+            <summary>
+            SQLite will create and destroy the journal file as-needed.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Persist">
+            <summary>
+            When this is set, SQLite will keep the journal file even after a transaction has completed.  It's contents will be erased,
+            and the journal re-used as often as needed.  If it is deleted, it will be recreated the next time it is needed.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Off">
+            <summary>
+            This option disables the rollback journal entirely.  Interrupted transactions or a program crash can cause database
+            corruption in this mode!
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Truncate">
+            <summary>
+            SQLite will truncate the journal file to zero-length instead of deleting it.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Memory">
+            <summary>
+            SQLite will store the journal in volatile RAM.  This saves disk I/O but at the expense of database safety and integrity.
+            If the application using SQLite crashes in the middle of a transaction when the MEMORY journaling mode is set, then the
+            database file will very likely go corrupt.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteJournalModeEnum.Wal">
+            <summary>
+            SQLite uses a write-ahead log instead of a rollback journal to implement transactions.  The WAL journaling mode is persistent;
+            after being set it stays in effect across multiple database connections and after closing and reopening the database. A database
+            in WAL journaling mode can only be accessed by SQLite version 3.7.0 or later.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.SynchronizationModes">
+            <summary>
+            Possible values for the "synchronous" database setting.  This setting determines
+            how often the database engine calls the xSync method of the VFS.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SynchronizationModes.Off">
+            <summary>
+            The database engine continues without syncing as soon as it has handed
+            data off to the operating system.  If the application running SQLite
+            crashes, the data will be safe, but the database might become corrupted
+            if the operating system crashes or the computer loses power before that
+            data has been written to the disk surface.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SynchronizationModes.Normal">
+            <summary>
+            The database engine will still sync at the most critical moments, but
+            less often than in FULL mode.  There is a very small (though non-zero)
+            chance that a power failure at just the wrong time could corrupt the
+            database in NORMAL mode.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SynchronizationModes.Full">
+            <summary>
+            The database engine will use the xSync method of the VFS to ensure that
+            all content is safely written to the disk surface prior to continuing.
+            This ensures that an operating system crash or power failure will not
+            corrupt the database.  FULL synchronous is very safe, but it is also
+            slower.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteTemporaryStore">
+            <summary>
+            Determines where temporary tables and indices are stored.
+            </summary>
+            <remarks>See <a href="http://www.sqlite.org/pragma.html#pragma_temp_store">pragma temp_store</a>.</remarks>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteTemporaryStore.Default">
+            <summary>
+            The SQLite library determines where temporary tables and indices are stored.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteTemporaryStore.File">
+            <summary>
+            Temporary tables and indices are stored in a file. 
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteTemporaryStore.Memory">
+            <summary>
+            Temporary tables and indices are kept in memory as if they were pure in-memory databases.
+            </summary>
+        </member>
+        <member name="M:System.Data.SQLite.SQLiteDataReader.GetReadOnlySpan(System.Int32)">
+            <summary>
+            Returns a <see cref="T:System.ReadOnlySpan`1"/> for the BLOB data in the specified column.
+            </summary>
+            <param name="ordinal">The column to read.</param>
+            <returns>A <see cref="T:System.ReadOnlySpan`1"/> wrapping native memory for the column data. This value is only valid
+            until the next row is read.</returns>
+        </member>
+        <member name="T:System.Data.SQLite.SQLiteErrorCode">
+            <summary>
+            SQLite error codes.  Actually, this enumeration represents a return code,
+            which may also indicate success in one of several ways (e.g. SQLITE_OK,
+            SQLITE_ROW, and SQLITE_DONE).  Therefore, the name of this enumeration is
+            something of a misnomer.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Unknown">
+            <summary>
+            The error code is unknown.  This error code
+            is only used by the managed wrapper itself.
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Ok">
+            <summary>
+            Successful result
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Error">
+            <summary>
+            SQL error or missing database
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Internal">
+            <summary>
+            Internal logic error in SQLite
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Perm">
+            <summary>
+            Access permission denied
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Abort">
+            <summary>
+            Callback routine requested an abort
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Busy">
+            <summary>
+            The database file is locked
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Locked">
+            <summary>
+            A table in the database is locked
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.NoMem">
+            <summary>
+            A malloc() failed
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.ReadOnly">
+            <summary>
+            Attempt to write a readonly database
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Interrupt">
+            <summary>
+            Operation terminated by sqlite3_interrupt()
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.IoErr">
+            <summary>
+            Some kind of disk I/O error occurred
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Corrupt">
+            <summary>
+            The database disk image is malformed
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.NotFound">
+            <summary>
+            Unknown opcode in sqlite3_file_control()
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Full">
+            <summary>
+            Insertion failed because database is full
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.CantOpen">
+            <summary>
+            Unable to open the database file
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Protocol">
+            <summary>
+            Database lock protocol error
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Empty">
+            <summary>
+            Database is empty
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Schema">
+            <summary>
+            The database schema changed
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.TooBig">
+            <summary>
+            String or BLOB exceeds size limit
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Constraint">
+            <summary>
+            Abort due to constraint violation
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Mismatch">
+            <summary>
+            Data type mismatch
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Misuse">
+            <summary>
+            Library used incorrectly
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.NoLfs">
+            <summary>
+            Uses OS features not supported on host
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Auth">
+            <summary>
+            Authorization denied
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Format">
+            <summary>
+            Auxiliary database format error
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Range">
+            <summary>
+            2nd parameter to sqlite3_bind out of range
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.NotADb">
+            <summary>
+            File opened that is not a database file
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Notice">
+            <summary>
+            Notifications from sqlite3_log()
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Warning">
+            <summary>
+            Warnings from sqlite3_log()
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Row">
+            <summary>
+            sqlite3_step() has another row ready
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.Done">
+            <summary>
+            sqlite3_step() has finished executing
+            </summary>
+        </member>
+        <member name="F:System.Data.SQLite.SQLiteErrorCode.NonExtendedMask">
+            <summary>
+            Used to mask off extended result codes
+            </summary>
+        </member>
+        <member name="E:System.Data.SQLite.SQLiteLog.Log">
+            <summary>
+            This event is raised whenever SQLite raises a logging event.
+            Note that this should be set as one of the first things in the
+            application.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.StatementCompletedEventArgs">
+            <summary>
+            Provides additional information for the <see cref="E:System.Data.SQLite.SQLiteConnection.StatementCompleted"/> event.
+            </summary>
+        </member>
+        <member name="P:System.Data.SQLite.StatementCompletedEventArgs.Sql">
+            <summary>
+            The SQL of the statement that was executed.
+            </summary>
+            <remarks>This property is only valid to read during the event handler callback. (Once read, the string can be cached.)</remarks>
+        </member>
+        <member name="P:System.Data.SQLite.StatementCompletedEventArgs.Time">
+            <summary>
+            The time it took to execute the statement.
+            </summary>
+        </member>
+        <member name="T:System.Data.SQLite.StatementCompletedEventHandler">
+            <summary>
+            The delegate type for the event handlers of the <see cref="E:System.Data.SQLite.SQLiteConnection.StatementCompleted"/> event.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The data for the event.</param>
+        </member>
+    </members>
+</doc>

@@ -37,5 +37,10 @@ namespace PsychoAT
             Program.w_Start.Show();
             Program.w_Stat.Hide();
         }
+
+        private void Statistics_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

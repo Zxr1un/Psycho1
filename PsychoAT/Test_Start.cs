@@ -66,5 +66,16 @@ namespace PsychoAT
         {
 
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            Program.w_Test_Start.Hide();
+            Program.w_Test.Show();
+        }
+
+        private void Test_Start_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

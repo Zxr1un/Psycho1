@@ -34,14 +34,24 @@ namespace PsychoAT
 
         }
 
-        private void Тесты_Click(object sender, EventArgs e)
+        private void To_test_choise_Click(object sender, EventArgs e)
         {
-            Program.w_Start.Hide();
-            Program.w_Test_Choice.Show();
+            if (!Program.Test_choise_logic.Check_for_an_error())
+            {
+                Program.w_Start.Hide();
+                Program.w_Test_Choice.Show();
+            }
+            else
+            {
+                MessageBox.Show("List of a Test is Empty! Check DB!!!", "Application error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            Program.db.show_current_test();
+            Program.db.show_all_tests();
+            
             Program.w_Start.Hide();
             Program.w_Stat.Show();
         }

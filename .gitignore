@@ -1,0 +1,18 @@
+﻿# Visual Studio
+.vs/
+*/.vs/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.userprefs

@@ -92,6 +92,7 @@
             this.guna2Button3.Size = new System.Drawing.Size(244, 126);
             this.guna2Button3.TabIndex = 6;
             this.guna2Button3.Text = "Начать тест";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button4
             // 
@@ -132,6 +133,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "Test_Start";
             this.Text = "Test_Start";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Test_Start_FormClosed);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
