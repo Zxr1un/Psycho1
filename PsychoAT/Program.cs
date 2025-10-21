@@ -367,7 +367,7 @@ namespace PsychoAT
                     this.Array_of_tests_divided_by_pages[i][j] = test;
                     j++;
                 }
-                else { i++; j = 0; }
+                else { i++; j = 1; this.Array_of_tests_divided_by_pages[i][0] = test; }
             }
         }
 
@@ -466,6 +466,8 @@ namespace PsychoAT
                 this.Array_of_answers_to_each_question[j] = a.answers.ToArray();
                 j++;
             }
+            Program.w_Test_Choice.Hide();
+            Program.w_Test_Start.Show();
             Task.Run(() => this.fill_dictionary(this.Array_of_answers_to_each_question));
         }
         private void fill_dictionary(Answer[][] Array_of_answers_to_each_question)

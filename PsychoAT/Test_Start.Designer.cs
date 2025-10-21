@@ -111,6 +111,7 @@
             this.guna2Button4.Size = new System.Drawing.Size(151, 90);
             this.guna2Button4.TabIndex = 7;
             this.guna2Button4.Text = "Выход";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // textBox1
             // 

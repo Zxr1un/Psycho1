@@ -78,5 +78,11 @@ namespace PsychoAT
         {
             Application.Exit();
         }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            Program.w_Test_Choice.Show();
+            Program.w_Test_Start.Hide();
+        }
     }
 }
