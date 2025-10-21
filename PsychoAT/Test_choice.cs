@@ -87,8 +87,6 @@ namespace PsychoAT
         private void Go_to_main_test_window(short index_of_choosen_test)
         {
             Program.Main_test_page.Set_current_test(this.Tests_array[index_of_choosen_test]);
-            Program.w_Test_Choice.Hide();
-            Program.w_Test_Start.Show();
         }
 
         private void test_page_next_Click(object sender, EventArgs e)
