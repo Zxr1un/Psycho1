@@ -98,7 +98,6 @@ namespace PsychoAT
 
         public List<Psycho_Test> tests = new List<Psycho_Test>(0);
         public Psycho_Test current_test = null;
-        public List<string> points_types = new List<string>();
 
         public string version = "3";
         private string dbPath = "Data Source=Psycho1\\PsychoAT\\tests.db;Version=3;";
@@ -214,8 +213,6 @@ namespace PsychoAT
 
                                                                 Points_cods point = new Points_cods(pointId, pointType, pointValue);
                                                                 answer.points_cods.Add(point);
-                                                                if(!this.points_types.Contains(point.type))
-                                                                    this.points_types.Add(point.type);
                                                             }
                                                         }
                                                     }
@@ -370,7 +367,7 @@ namespace PsychoAT
                     this.Array_of_tests_divided_by_pages[i][j] = test;
                     j++;
                 }
-                else { i++; j = 0; }
+                else { i++; j = 1; this.Array_of_tests_divided_by_pages[i][0] = test; }
             }
         }
 
@@ -449,7 +446,6 @@ namespace PsychoAT
                 MessageBox.Show("No questions in test!! Check BD!!!!", "BD error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Task.Run(() => this.fill_dictionary());
             this.Number_of_questions = size_of_questions_list;
             this.Array_of_questions_texts = new string[size_of_questions_list];
             this.Selected_answers_array = new int[size_of_questions_list];
@@ -470,12 +466,22 @@ namespace PsychoAT
                 this.Array_of_answers_to_each_question[j] = a.answers.ToArray();
                 j++;
             }
+            Program.w_Test_Choice.Hide();
+            Program.w_Test_Start.Show();
+            Task.Run(() => this.fill_dictionary(this.Array_of_answers_to_each_question));
         }
-        private void fill_dictionary()
+        private void fill_dictionary(Answer[][] Array_of_answers_to_each_question)
         {
-            foreach(string type in db.points_types)
+            for (int i = 0; i < Array_of_answers_to_each_question.Length; i++)
             {
-                this.point_collector.Add(type, 0);
+                for (int j = 0; j < Array_of_answers_to_each_question[i].Length; j++)
+                {
+                    foreach(Points_cods a in Array_of_answers_to_each_question[i][j].points_cods)
+                    {
+                        if (!this.point_collector.ContainsKey(a.type))
+                            this.point_collector.Add(a.type, 0);
+                    }
+                }
             }
         }
         public Answer[] Get_array_of_answers()
