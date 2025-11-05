@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Test_Start" Height="450" Width="800">
+        Title="Test_Start" Height="730" Width="920" Background="#FF3A454B" WindowStyle="None">
     <Grid>
         
     </Grid>
