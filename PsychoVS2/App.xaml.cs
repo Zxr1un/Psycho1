@@ -33,6 +33,7 @@ namespace PsychoVS2
 
             var mainWindow = new MainWindow();
             mainWindow.Show();
+            
         }
     }
 }

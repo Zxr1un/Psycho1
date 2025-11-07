@@ -1,12 +1,2952 @@
 ﻿<Window x:Class="PsychoVS2.Windows.Test_choice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://schemas.materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Test_choice" Height="450" Width="800">
+        Title="Test_Start" Height="1174" Width="1653" Background="#FF3A454B" WindowStyle="None">
     <Grid>
-        
+        <!-- Заголовок сверху по центру -->
+        <Label Content="Тесты"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   FontSize="32" FontWeight="Bold" Foreground="#FFFFCA28"
+                   FontFamily="Montserrat"
+                   Padding="0" Background="Transparent" BorderThickness="0"/>
+
+        <Canvas>
+
+            <!-- КНОПКА 1  -->
+            <Button x:Name="Card_1" Width="349" Height="448" 
+                    Canvas.Left="40" Canvas.Top="42"
+                    Click="Button_One_Click" Background="White" Foreground="#FF3A454B"
+                    FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="20"
+                                SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                                ShadowDepth="3" 
+                                                Direction="330" 
+                                                Color="#CC000000" 
+                                                Opacity="0.3" 
+                                                BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_1_Grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                    <!-- Оставшееся пространство -->
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+            Background="#FF657C89"
+            CornerRadius="0,0,20,20"
+            Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_1_Image"
+           Source="/Image/testImage2.png"
+           Width="167" Height="200"
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_1_BorderTime" Grid.Row="0" 
+            Background="#FF6590A7" 
+            CornerRadius="10"
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top"
+            Margin="15,15,15,0"
+            Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                  Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_1_LabelTime" Content="15 мин"
+                       FontSize="11" 
+                       FontWeight="Medium" 
+                       Foreground="White"
+                       FontFamily="Montserrat"
+                       VerticalAlignment="Center"
+                       Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_1_BorderTypeTest" Background="#FF6590A7" 
+                CornerRadius="10"
+                Padding="8,4"
+                Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_1_LabelTypeTest" Content="Психология"
+                           FontSize="11" 
+                           FontWeight="Medium" 
+                           Foreground="White"
+                           FontFamily="Montserrat"
+                           VerticalAlignment="Center"
+                           Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_1_BorderQuestions" Background="#FF6590A7" 
+                CornerRadius="10"
+                Padding="8,4"
+                HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                      Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_1_LabelQuestions" Content="20 вопросов"
+                           FontSize="11" 
+                           FontWeight="Medium" 
+                           Foreground="White"
+                           FontFamily="Montserrat"
+                           VerticalAlignment="Center"
+                           Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_1_LabelNameTest" 
+           Grid.Row="2"
+           Content="Название теста"
+           HorizontalAlignment="Left" VerticalAlignment="Center"
+           FontSize="17" FontWeight="Medium" Foreground="White" 
+           Margin="12,0,0,0" FontFamily="Montserrat"
+           Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled"
+                  Margin="13,2,15,0">
+                                    <Label x:Name="Card_1_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+               FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+               Foreground="#FFB6B6B6"
+               Padding="0" Background="Transparent" BorderThickness="0"
+               ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                               FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                               Foreground="#FFB6B6B6"
+                               Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                       TextWrapping="Wrap" 
+                                                                       TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+               Height="1"
+               Fill="#FFE0E0E0"
+               Margin="15,0,15,0"
+               VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                Orientation="Horizontal" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center"
+                Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+              Fill="#FFFFCA28" 
+              Stretch="Uniform" 
+              Width="14" 
+              Height="14" 
+              Margin="0,0,6,0"
+              VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_1_LabelAuthor1" Content="Иванов И.И."
+               FontSize="11"
+               FontWeight="Medium"
+               Foreground="White"
+               FontFamily="Montserrat"
+               VerticalAlignment="Center"
+               Padding="2,0"
+               Background="Transparent" 
+               BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                   Height="12" 
+                   Fill="#FFB6B6B6" 
+                   Margin="4,0" 
+                   VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_1_LabelAuthor2" Content="Петров П.П."
+               FontSize="11"
+               FontWeight="Medium"
+               Foreground="White"
+               FontFamily="Montserrat"
+               VerticalAlignment="Center"
+               Padding="2,0"
+               Background="Transparent" 
+               BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                   Height="12" 
+                   Fill="#FFB6B6B6" 
+                   Margin="4,0" 
+                   VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_1_LabelAuthor3" Content="Сидоров С.С."
+               FontSize="11"
+               FontWeight="Medium"
+               Foreground="White"
+               FontFamily="Montserrat"
+               VerticalAlignment="Center"
+               Padding="2,0"
+               Background="Transparent" 
+               BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                   Height="12" 
+                   Fill="#FFB6B6B6" 
+                   Margin="4,0" 
+                   VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_1_LabelAuthor4" Content="Кузнецов К.К."
+               FontSize="11"
+               FontWeight="Medium"
+               Foreground="White"
+               FontFamily="Montserrat"
+               VerticalAlignment="Center"
+               Padding="2,0"
+               Background="Transparent" 
+               BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                           To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                           Storyboard.TargetProperty="ShadowDepth"
+                                                           To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                           Storyboard.TargetProperty="Opacity"
+                                                           To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                           To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                           Storyboard.TargetProperty="ShadowDepth"
+                                                           To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                           Storyboard.TargetProperty="Opacity"
+                                                           To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="Card_2" Width="349" Height="448" 
+                Canvas.Left="407.2" Canvas.Top="42"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_1_Grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="180"/>
+                                    <!-- Оставшееся пространство -->
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_2_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_2_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_2_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_2_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_2_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_2_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_2_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_2_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_2_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_2_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_2_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_2_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_2_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform1"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="Card_5" Width="349" Height="448" 
+                Canvas.Left="40" Canvas.Top="505.4"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_1_Grid">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="180"/>
+                                    <!-- Оставшееся пространство -->
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_5_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_5_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_5_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_5_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_5_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_5_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_5_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_5_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_5_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_5_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_5_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_5_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_5_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform2"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="Card_6" Width="349" Height="448" 
+                Canvas.Left="407.2" Canvas.Top="505.269"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_6_Grid">
+                                <Grid.RowDefinitions>
+                                    <!-- Оставшееся пространство -->
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_6_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_6_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_6_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_6_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_6_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_6_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_6_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_6_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_6_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_6_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_6_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_6_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_6_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform4"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="Card_3" Width="349" Height="448" 
+                Canvas.Left="777.199" Canvas.Top="42"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_3_Grid">
+                                <Grid.RowDefinitions>
+                                    <!-- Оставшееся пространство -->
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_3_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_3_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_3_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_3_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_3_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_3_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_3_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_3_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_3_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_3_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_3_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_3_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_3_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform5"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button x:Name="Card_1_Копировать6" Width="349" Height="448"
+                    Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                    FontSize="18" FontWeight="Bold">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="20"
+                                SnapsToDevicePixels="True">
+                                <Border.Effect>
+                                    <DropShadowEffect x:Name="shadow" 
+                                        ShadowDepth="3" 
+                                        Direction="330" 
+                                        Color="#CC000000" 
+                                        Opacity="0.3" 
+                                        BlurRadius="10"/>
+                                </Border.Effect>
+
+                                <!-- Контейнер для содержимого кнопки -->
+                                <Grid x:Name="Card_1_Grid">
+                                    <Grid.RowDefinitions>
+                                        <!-- Оставшееся пространство -->
+                                        <RowDefinition Height="180"/>
+                                        <!-- Место для изображения -->
+                                        <RowDefinition Height="30"/>
+                                        <!-- Место для элементов -->
+                                        <RowDefinition Height="30"/>
+                                        <!-- Место для названия теста -->
+                                        <RowDefinition Height="145"/>
+                                        <!-- Место для описания -->
+                                        <RowDefinition Height="20"/>
+                                        <!-- Отступ для линии -->
+                                        <RowDefinition Height="1"/>
+                                        <!-- Линия -->
+                                        <RowDefinition Height="5"/>
+                                        <!-- Место для авторов -->
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Фон для нижней части карточки -->
+                                    <Border Grid.Row="2" Grid.RowSpan="7"
+                                        Background="#FF657C89"
+                                        CornerRadius="0,0,20,20"
+                                        Margin="0,-20,0,0"/>
+
+                                    <!-- Изображение -->
+                                    <Image x:Name="Card_1_Image"
+                                        Source="D:\PHCHUR\testImage2.png"
+                                        Width="167" Height="200"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Stretch="Uniform"/>
+
+                                    <!-- Время прохождения в правом верхнем углу -->
+                                    <Border x:Name="Card_1_BorderTime" Grid.Row="0" 
+                                        Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Top"
+                                        Margin="15,15,15,0"
+                                        Padding="8,4">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_1_LabelTime" Content="15 мин"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Элементы под изображением -->
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                        <!-- Тип теста слева -->
+                                        <Border x:Name="Card_1_BorderTypeTest" Background="#FF6590A7" 
+                                            CornerRadius="10"
+                                            Padding="8,4"
+                                            Margin="0,0,8,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label x:Name="Card_1_LabelTypeTest" Content="Психология"
+                                                    FontSize="11" 
+                                                    FontWeight="Medium" 
+                                                    Foreground="White"
+                                                    FontFamily="Montserrat"
+                                                    VerticalAlignment="Center"
+                                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <!-- Количество вопросов справа -->
+                                        <Border x:Name="Card_1_BorderQuestions" Background="#FF6590A7" 
+                                            CornerRadius="10"
+                                            Padding="8,4"
+                                            HorizontalAlignment="Right">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                    Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                                <Label x:Name="Card_1_LabelQuestions" Content="20 вопросов"
+                                                    FontSize="11" 
+                                                    FontWeight="Medium" 
+                                                    Foreground="White"
+                                                    FontFamily="Montserrat"
+                                                    VerticalAlignment="Center"
+                                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+
+                                    <!-- Название теста -->
+                                    <Label x:Name="Card_1_LabelNameTest" 
+                                        Grid.Row="2"
+                                        Content="Название теста"
+                                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                                        FontSize="17" FontWeight="Medium" Foreground="White" 
+                                        Margin="12,0,0,0" FontFamily="Montserrat"
+                                        Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                    <!-- ScrollViewer с Label для описания -->
+                                    <ScrollViewer Grid.Row="3"
+                                        VerticalScrollBarVisibility="Auto"
+                                        HorizontalScrollBarVisibility="Disabled"
+                                        Margin="13,2,15,0">
+                                        <Label x:Name="Card_1_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                            FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                            Foreground="#FFB6B6B6"
+                                            Padding="0" Background="Transparent" BorderThickness="0"
+                                            ContentStringFormat="{x:Null}">
+                                            <Label.ContentTemplate>
+                                                <DataTemplate>
+                                                    <Label Content="{Binding}" 
+                                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                        Foreground="#FFB6B6B6"
+                                                        Padding="0" Background="Transparent" BorderThickness="0">
+                                                        <Label.ContentTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding}" 
+                                                                    TextWrapping="Wrap" 
+                                                                    TextAlignment="Justify"/>
+                                                            </DataTemplate>
+                                                        </Label.ContentTemplate>
+                                                    </Label>
+                                                </DataTemplate>
+                                            </Label.ContentTemplate>
+                                        </Label>
+                                    </ScrollViewer>
+
+                                    <!-- Линия внизу карточки -->
+                                    <Rectangle Grid.Row="5"
+                                        Height="1"
+                                        Fill="#FFE0E0E0"
+                                        Margin="15,0,15,0"
+                                        VerticalAlignment="Bottom"/>
+
+                                    <!-- Авторы теста -->
+                                    <StackPanel Grid.Row="7" 
+                                        Orientation="Horizontal" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center"
+                                        Margin="12,0,0,0">
+                                        <!-- Иконка автора -->
+                                        <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                            Fill="#FFFFCA28" 
+                                            Stretch="Uniform" 
+                                            Width="14" 
+                                            Height="14" 
+                                            Margin="0,0,6,0"
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 1 -->
+                                        <Label x:Name="Card_1_LabelAuthor1" Content="Иванов И.И."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 2 -->
+                                        <Label x:Name="Card_1_LabelAuthor2" Content="Петров П.П."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 3 -->
+                                        <Label x:Name="Card_1_LabelAuthor3" Content="Сидоров С.С."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 4 -->
+                                        <Label x:Name="Card_1_LabelAuthor4" Content="Кузнецов К.К."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <!-- Анимация подпрыгивания -->
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <!-- Подъем вверх -->
+                                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                    To="-10" Duration="0:0:0.15"/>
+                                                <!-- Увеличение тени -->
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="ShadowDepth"
+                                                    To="5" Duration="0:0:0.15"/>
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.4" Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <!-- Возврат в исходное положение -->
+                                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                    To="0" Duration="0:0:0.1"/>
+                                                <!-- Возврат тени -->
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="ShadowDepth"
+                                                    To="3" Duration="0:0:0.1"/>
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.3" Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                    <!-- Изменение цвета при наведении -->
+                                    <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <!-- Transform для анимации -->
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform x:Name="bounceTransform7"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Button>
+            <Button x:Name="Card_4" Width="349" Height="448" 
+                Canvas.Left="1144.53" Canvas.Top="42"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_4_Grid">
+                                <Grid.RowDefinitions>
+                                    <!-- Оставшееся пространство -->
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_4_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_4_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_4_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_4_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_4_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_4_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_4_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_4_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_4_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_4_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_4_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_4_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_4_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform6"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Button x:Name="Card_7" Width="349" Height="448" 
+                Canvas.Left="777.2" Canvas.Top="505.066"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_7_Grid">
+                                <Grid.RowDefinitions>
+                                    <!-- Оставшееся пространство -->
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_7_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_7_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_7_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_7_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_7_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_7_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_7_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_7_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_7_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_7_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_7_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_7_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_7_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform9"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button x:Name="Card_1_Копировать8" Width="349" Height="448"
+                    Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                    FontSize="18" FontWeight="Bold">
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="20"
+                                SnapsToDevicePixels="True">
+                                <Border.Effect>
+                                    <DropShadowEffect x:Name="shadow" 
+                                        ShadowDepth="3" 
+                                        Direction="330" 
+                                        Color="#CC000000" 
+                                        Opacity="0.3" 
+                                        BlurRadius="10"/>
+                                </Border.Effect>
+
+                                <!-- Контейнер для содержимого кнопки -->
+                                <Grid x:Name="Card_1_Grid">
+                                    <Grid.RowDefinitions>
+                                        <!-- Оставшееся пространство -->
+                                        <RowDefinition Height="180"/>
+                                        <!-- Место для изображения -->
+                                        <RowDefinition Height="30"/>
+                                        <!-- Место для элементов -->
+                                        <RowDefinition Height="30"/>
+                                        <!-- Место для названия теста -->
+                                        <RowDefinition Height="145"/>
+                                        <!-- Место для описания -->
+                                        <RowDefinition Height="20"/>
+                                        <!-- Отступ для линии -->
+                                        <RowDefinition Height="1"/>
+                                        <!-- Линия -->
+                                        <RowDefinition Height="5"/>
+                                        <!-- Место для авторов -->
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Фон для нижней части карточки -->
+                                    <Border Grid.Row="2" Grid.RowSpan="7"
+                                        Background="#FF657C89"
+                                        CornerRadius="0,0,20,20"
+                                        Margin="0,-20,0,0"/>
+
+                                    <!-- Изображение -->
+                                    <Image x:Name="Card_1_Image"
+                                        Source="D:\PHCHUR\testImage2.png"
+                                        Width="167" Height="200"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Stretch="Uniform"/>
+
+                                    <!-- Время прохождения в правом верхнем углу -->
+                                    <Border x:Name="Card_1_BorderTime" Grid.Row="0" 
+                                        Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        HorizontalAlignment="Right" 
+                                        VerticalAlignment="Top"
+                                        Margin="15,15,15,0"
+                                        Padding="8,4">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_1_LabelTime" Content="15 мин"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Элементы под изображением -->
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                        <!-- Тип теста слева -->
+                                        <Border x:Name="Card_1_BorderTypeTest" Background="#FF6590A7" 
+                                            CornerRadius="10"
+                                            Padding="8,4"
+                                            Margin="0,0,8,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label x:Name="Card_1_LabelTypeTest" Content="Психология"
+                                                    FontSize="11" 
+                                                    FontWeight="Medium" 
+                                                    Foreground="White"
+                                                    FontFamily="Montserrat"
+                                                    VerticalAlignment="Center"
+                                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <!-- Количество вопросов справа -->
+                                        <Border x:Name="Card_1_BorderQuestions" Background="#FF6590A7" 
+                                            CornerRadius="10"
+                                            Padding="8,4"
+                                            HorizontalAlignment="Right">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                    Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                                <Label x:Name="Card_1_LabelQuestions" Content="20 вопросов"
+                                                    FontSize="11" 
+                                                    FontWeight="Medium" 
+                                                    Foreground="White"
+                                                    FontFamily="Montserrat"
+                                                    VerticalAlignment="Center"
+                                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+
+                                    <!-- Название теста -->
+                                    <Label x:Name="Card_1_LabelNameTest" 
+                                        Grid.Row="2"
+                                        Content="Название теста"
+                                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                                        FontSize="17" FontWeight="Medium" Foreground="White" 
+                                        Margin="12,0,0,0" FontFamily="Montserrat"
+                                        Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                    <!-- ScrollViewer с Label для описания -->
+                                    <ScrollViewer Grid.Row="3"
+                                        VerticalScrollBarVisibility="Auto"
+                                        HorizontalScrollBarVisibility="Disabled"
+                                        Margin="13,2,15,0">
+                                        <Label x:Name="Card_1_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                            FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                            Foreground="#FFB6B6B6"
+                                            Padding="0" Background="Transparent" BorderThickness="0"
+                                            ContentStringFormat="{x:Null}">
+                                            <Label.ContentTemplate>
+                                                <DataTemplate>
+                                                    <Label Content="{Binding}" 
+                                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                        Foreground="#FFB6B6B6"
+                                                        Padding="0" Background="Transparent" BorderThickness="0">
+                                                        <Label.ContentTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding}" 
+                                                                    TextWrapping="Wrap" 
+                                                                    TextAlignment="Justify"/>
+                                                            </DataTemplate>
+                                                        </Label.ContentTemplate>
+                                                    </Label>
+                                                </DataTemplate>
+                                            </Label.ContentTemplate>
+                                        </Label>
+                                    </ScrollViewer>
+
+                                    <!-- Линия внизу карточки -->
+                                    <Rectangle Grid.Row="5"
+                                        Height="1"
+                                        Fill="#FFE0E0E0"
+                                        Margin="15,0,15,0"
+                                        VerticalAlignment="Bottom"/>
+
+                                    <!-- Авторы теста -->
+                                    <StackPanel Grid.Row="7" 
+                                        Orientation="Horizontal" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center"
+                                        Margin="12,0,0,0">
+                                        <!-- Иконка автора -->
+                                        <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                            Fill="#FFFFCA28" 
+                                            Stretch="Uniform" 
+                                            Width="14" 
+                                            Height="14" 
+                                            Margin="0,0,6,0"
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 1 -->
+                                        <Label x:Name="Card_1_LabelAuthor1" Content="Иванов И.И."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 2 -->
+                                        <Label x:Name="Card_1_LabelAuthor2" Content="Петров П.П."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 3 -->
+                                        <Label x:Name="Card_1_LabelAuthor3" Content="Сидоров С.С."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+
+                                        <!-- Вертикальная линия разделитель -->
+                                        <Rectangle Width="1" 
+                                            Height="12" 
+                                            Fill="#FFB6B6B6" 
+                                            Margin="4,0" 
+                                            VerticalAlignment="Center"/>
+
+                                        <!-- Автор 4 -->
+                                        <Label x:Name="Card_1_LabelAuthor4" Content="Кузнецов К.К."
+                                            FontSize="11"
+                                            FontWeight="Medium"
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="2,0"
+                                            Background="Transparent" 
+                                            BorderThickness="0"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <!-- Анимация подпрыгивания -->
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <!-- Подъем вверх -->
+                                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                    To="-10" Duration="0:0:0.15"/>
+                                                <!-- Увеличение тени -->
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="ShadowDepth"
+                                                    To="5" Duration="0:0:0.15"/>
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.4" Duration="0:0:0.15"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <!-- Возврат в исходное положение -->
+                                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                    To="0" Duration="0:0:0.1"/>
+                                                <!-- Возврат тени -->
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="ShadowDepth"
+                                                    To="3" Duration="0:0:0.1"/>
+                                                <DoubleAnimation Storyboard.TargetName="shadow"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    To="0.3" Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                    <!-- Изменение цвета при наведении -->
+                                    <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <!-- Transform для анимации -->
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform x:Name="bounceTransform8"/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Button>
+            <Button x:Name="Card_8" Width="349" Height="448" 
+                Canvas.Left="1144.2" Canvas.Top="504.667"
+                Click="Button_Click" Background="White" Foreground="#FF3A454B"
+                FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="shadow" 
+                                    ShadowDepth="3" 
+                                    Direction="330" 
+                                    Color="#CC000000" 
+                                    Opacity="0.3" 
+                                    BlurRadius="10"/>
+                            </Border.Effect>
+
+                            <!-- Контейнер для содержимого кнопки -->
+                            <Grid x:Name="Card_8_Grid">
+                                <Grid.RowDefinitions>
+                                    <!-- Оставшееся пространство -->
+                                    <RowDefinition Height="180"/>
+                                    <!-- Место для изображения -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для элементов -->
+                                    <RowDefinition Height="30"/>
+                                    <!-- Место для названия теста -->
+                                    <RowDefinition Height="145"/>
+                                    <!-- Место для описания -->
+                                    <RowDefinition Height="20"/>
+                                    <!-- Отступ для линии -->
+                                    <RowDefinition Height="1"/>
+                                    <!-- Линия -->
+                                    <RowDefinition Height="5"/>
+                                    <!-- Место для авторов -->
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Фон для нижней части карточки -->
+                                <Border Grid.Row="2" Grid.RowSpan="7"
+                                    Background="#FF657C89"
+                                    CornerRadius="0,0,20,20"
+                                    Margin="0,-20,0,0"/>
+
+                                <!-- Изображение -->
+                                <Image x:Name="Card_8_Image"
+                                    Source="D:\PHCHUR\testImage2.png"
+                                    Width="167" Height="200"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Stretch="Uniform"/>
+
+                                <!-- Время прохождения в правом верхнем углу -->
+                                <Border x:Name="Card_8_BorderTime" Grid.Row="0" 
+                                    Background="#FF6590A7" 
+                                    CornerRadius="10"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Margin="15,15,15,0"
+                                    Padding="8,4">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Path Data="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z" 
+                                            Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                        <Label x:Name="Card_8_LabelTime" Content="15 мин"
+                                            FontSize="11" 
+                                            FontWeight="Medium" 
+                                            Foreground="White"
+                                            FontFamily="Montserrat"
+                                            VerticalAlignment="Center"
+                                            Padding="0" Background="Transparent" BorderThickness="0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Элементы под изображением -->
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="12,5,12,0">
+                                    <!-- Тип теста слева -->
+                                    <Border x:Name="Card_8_BorderTypeTest" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        Margin="0,0,8,0">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label x:Name="Card_8_LabelTypeTest" Content="Психология"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <!-- Количество вопросов справа -->
+                                    <Border x:Name="Card_8_BorderQuestions" Background="#FF6590A7" 
+                                        CornerRadius="10"
+                                        Padding="8,4"
+                                        HorizontalAlignment="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Path Data="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" 
+                                                Fill="#FFFFCA28" Stretch="Uniform" Width="12" Height="12" Margin="0,0,4,0"/>
+                                            <Label x:Name="Card_8_LabelQuestions" Content="20 вопросов"
+                                                FontSize="11" 
+                                                FontWeight="Medium" 
+                                                Foreground="White"
+                                                FontFamily="Montserrat"
+                                                VerticalAlignment="Center"
+                                                Padding="0" Background="Transparent" BorderThickness="0"/>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+
+                                <!-- Название теста -->
+                                <Label x:Name="Card_8_LabelNameTest" 
+                                    Grid.Row="2"
+                                    Content="Название теста"
+                                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                                    FontSize="17" FontWeight="Medium" Foreground="White" 
+                                    Margin="12,0,0,0" FontFamily="Montserrat"
+                                    Padding="0" Background="Transparent" BorderThickness="0"/>
+
+                                <!-- ScrollViewer с Label для описания -->
+                                <ScrollViewer Grid.Row="3"
+                                    VerticalScrollBarVisibility="Auto"
+                                    HorizontalScrollBarVisibility="Disabled"
+                                    Margin="13,2,15,0">
+                                    <Label x:Name="Card_8_LabelDescription" Content="Первые два способа рассматривать не станем, ввиду достаточной автономности каждого из них (кроме того, практически у всех, за некоторым исключением, использование второго способа, со временем + приобретением опыта «Оператора ЭВМ», сходит на нет, и полностью заменяется первым либо третьим способом)."
+                                        FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                        Foreground="#FFB6B6B6"
+                                        Padding="0" Background="Transparent" BorderThickness="0"
+                                        ContentStringFormat="{x:Null}">
+                                        <Label.ContentTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding}" 
+                                                    FontFamily="Montserrat" FontSize="14" FontWeight="Regular" 
+                                                    Foreground="#FFB6B6B6"
+                                                    Padding="0" Background="Transparent" BorderThickness="0">
+                                                    <Label.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" 
+                                                                TextWrapping="Wrap" 
+                                                                TextAlignment="Justify"/>
+                                                        </DataTemplate>
+                                                    </Label.ContentTemplate>
+                                                </Label>
+                                            </DataTemplate>
+                                        </Label.ContentTemplate>
+                                    </Label>
+                                </ScrollViewer>
+
+                                <!-- Линия внизу карточки -->
+                                <Rectangle Grid.Row="5"
+                                    Height="1"
+                                    Fill="#FFE0E0E0"
+                                    Margin="15,0,15,0"
+                                    VerticalAlignment="Bottom"/>
+
+                                <!-- Авторы теста -->
+                                <StackPanel Grid.Row="7" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center"
+                                    Margin="12,0,0,0">
+                                    <!-- Иконка автора -->
+                                    <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+                                        Fill="#FFFFCA28" 
+                                        Stretch="Uniform" 
+                                        Width="14" 
+                                        Height="14" 
+                                        Margin="0,0,6,0"
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 1 -->
+                                    <Label x:Name="Card_8_LabelAuthor1" Content="Иванов И.И."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 2 -->
+                                    <Label x:Name="Card_8_LabelAuthor2" Content="Петров П.П."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 3 -->
+                                    <Label x:Name="Card_8_LabelAuthor3" Content="Сидоров С.С."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+
+                                    <!-- Вертикальная линия разделитель -->
+                                    <Rectangle Width="1" 
+                                        Height="12" 
+                                        Fill="#FFB6B6B6" 
+                                        Margin="4,0" 
+                                        VerticalAlignment="Center"/>
+
+                                    <!-- Автор 4 -->
+                                    <Label x:Name="Card_8_LabelAuthor4" Content="Кузнецов К.К."
+                                        FontSize="11"
+                                        FontWeight="Medium"
+                                        Foreground="White"
+                                        FontFamily="Montserrat"
+                                        VerticalAlignment="Center"
+                                        Padding="2,0"
+                                        Background="Transparent" 
+                                        BorderThickness="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Анимация подпрыгивания -->
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Подъем вверх -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="-10" Duration="0:0:0.15"/>
+                                            <!-- Увеличение тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="5" Duration="0:0:0.15"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.4" Duration="0:0:0.15"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <!-- Возврат в исходное положение -->
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"
+                                                To="0" Duration="0:0:0.1"/>
+                                            <!-- Возврат тени -->
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="ShadowDepth"
+                                                To="3" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="shadow"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0.3" Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                                <!-- Изменение цвета при наведении -->
+                                <Setter TargetName="border" Property="Background" Value="#FFF5F5F5"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE0E0E0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+
+                <!-- Transform для анимации -->
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="bounceTransform10"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+
+        </Canvas>
+
+        <!-- Кнопка закрытия с плавным скруглением -->
+        <Button x:Name="CloseButton" Content="×" Width="35" Height="35" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="0,15,15,0" Click="CloseButton_Click"
+                Background="#FF6B6B6B" Foreground="White" 
+                FontSize="18" FontWeight="Bold" FontFamily="Arial">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="17.5"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            Margin="0"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#FFE53935"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#FFC62828"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

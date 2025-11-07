@@ -11,6 +11,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+
 
 namespace PsychoVS2.Windows
 {
@@ -22,6 +29,12 @@ namespace PsychoVS2.Windows
         public Start()
         {
             InitializeComponent();
+            WindowState = WindowState.Maximized;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

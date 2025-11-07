@@ -1,27 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace PsychoVS2.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Test_Start.xaml
+    /// Логика взаимодействия для Test_choice.xaml
     /// </summary>
     public partial class Test_Start : Window
     {
         public Test_Start()
         {
             InitializeComponent();
+            WindowState = WindowState.Maximized;
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Test_choice testChoiceWindow = new Test_choice();
+            testChoiceWindow.Show();
+            this.Close();
+        }
+
+        private void StartTestButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Test Test = new Test();
+            Test.Show();
+            this.Close();
+            
+        }
+
     }
 }
