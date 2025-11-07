@@ -5,8 +5,396 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" Background="#FF3A454B" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Анимация для плавного появления всей надписи -->
+        <Storyboard x:Key="TextAppearAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.ScaleX">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.ScaleY">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Анимация для логотипа -->
+        <Storyboard x:Key="LogoAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.ScaleX">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.ScaleY">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ElasticEase EasingMode="EaseOut" Oscillations="2" Springiness="3"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Индивидуальные анимации для каждой волны -->
+        <!-- Верхняя волна 1 - горизонтальное движение -->
+        <Storyboard x:Key="TopWave1Animation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].X">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-40">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Верхняя волна 2 - вертикальное движение -->
+        <Storyboard x:Key="TopWave2Animation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].Y">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="15">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:15" Value="-10">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:20" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Нижняя волна 1 - диагональное движение -->
+        <Storyboard x:Key="BottomWave1Animation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].X">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="30">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:16" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].Y">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="-8">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:12" Value="12">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:16" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Нижняя волна 2 - волнообразное движение -->
+        <Storyboard x:Key="BottomWave2Animation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].X">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="-25">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:14" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:21" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.Children[0].Y">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:10.5" Value="-7">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:14" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:17.5" Value="3">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:21" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <SineEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid Background="#2C3E50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="799*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Кнопка закрытия -->
+        <Button Content="X" Width="25" Height="25" Background="Transparent" 
+                Foreground="White" FontSize="12" HorizontalAlignment="Right" 
+                VerticalAlignment="Top" Margin="0,10,10,0" Click="CloseButton_Click" 
+                Cursor="Hand" Grid.Column="1"/>
+
+        <!-- Основной контейнер -->
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- Логотип -->
+            <Canvas x:Name="LogoContainer" Width="120" Height="120" HorizontalAlignment="Center" 
+                   Margin="0,0,0,30" Opacity="0">
+                <Canvas.RenderTransform>
+                    <ScaleTransform CenterX="60" CenterY="60"/>
+                </Canvas.RenderTransform>
+
+                <!-- Основная часть мозга -->
+                <Path Fill="#FFD9B117" Data="M60,20 C40,25 25,40 25,60 C25,80 40,95 60,100 C80,95 95,80 95,60 C95,40 80,25 60,20 Z">
+                    <Path.RenderTransform>
+                        <TranslateTransform Y="-5"/>
+                    </Path.RenderTransform>
+                </Path>
+
+                <!-- Извилины мозга -->
+                <Path Fill="#FF3A454B" Data="M45,35 C50,30 70,30 75,35 C75,40 70,45 60,45 C50,45 45,40 45,35 Z"/>
+                <Path Fill="#FF3A454B" Data="M40,55 C45,50 65,50 70,55 C70,60 65,65 55,65 C45,65 40,60 40,55 Z"/>
+                <Path Fill="#FF3A454B" Data="M45,75 C50,70 70,70 75,75 C75,80 70,85 60,85 C50,85 45,80 45,75 Z"/>
+
+                <!-- Левое полушарие -->
+                <Path Fill="#FFD9B117" Data="M35,50 C25,45 15,55 20,65 C25,75 35,70 40,60 C38,57 36,53 35,50 Z"/>
+
+                <!-- Правое полушарие -->
+                <Path Fill="#FFD9B117" Data="M85,50 C95,45 105,55 100,65 C95,75 85,70 80,60 C82,57 84,53 85,50 Z"/>
+
+                <!-- Декоративные элементы -->
+                <Ellipse Fill="#FF3F5273" Width="8" Height="8" Canvas.Left="50" Canvas.Top="30"/>
+                <Ellipse Fill="#FF3F5273" Width="8" Height="8" Canvas.Left="65" Canvas.Top="30"/>
+                <Ellipse Fill="#FF3F5273" Width="6" Height="6" Canvas.Left="45" Canvas.Top="50"/>
+                <Ellipse Fill="#FF3F5273" Width="6" Height="6" Canvas.Left="70" Canvas.Top="50"/>
+                <Ellipse Fill="#FF3F5273" Width="7" Height="7" Canvas.Left="55" Canvas.Top="70"/>
+            </Canvas>
+
+            <!-- Контейнер для букв с общей анимацией -->
+            <StackPanel x:Name="LettersContainer" Orientation="Horizontal" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Opacity="0" RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <ScaleTransform/>
+                </StackPanel.RenderTransform>
+
+                <!-- Буквы (убраны индивидуальные трансформы, так как теперь анимируем всю надпись) -->
+                <TextBlock x:Name="LetterP" Text="P" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Letters1" Text="s" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Lettery" Text="y" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Letterc" Text="c" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Letterh" Text="h" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Lettero" Text="o" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="LetterT" Text="T" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Lettere" Text="e" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Letters2" Text="s" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+
+                <TextBlock x:Name="Lettert" Text="t" FontFamily="Arial" FontSize="100" 
+                          Foreground="#FFD9B117" Margin="5">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Кнопка под надписью -->
+            <Button Content="Начать прохождение теста" 
+                    Height="68" 
+                    Width="246" 
+                    Background="#FFBBAF99"
+                    Margin="0,50,0,0"
+                    HorizontalAlignment="Center" Click="Button_Click" FontSize="16" FontFamily="Inter"
+                    Opacity="0" x:Name="StartButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </StackPanel>
+
+        <!-- Верхние волны -->
+        <Path x:Name="TopWave1" Fill="#FFBDCCDB" Height="143" Stretch="Fill" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="-68,34,-62,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Data>
+                <PathGeometry Figures="M0,121.2 C54.1,135.5 89.6,140.8 113.6,114.4 143.6,81.3 198,112.7 248,107.7 298,102.7 347.5,73 397.5,78 423.8,80.6 447.9,98.7 474.1,103 497.7,106.9 523.4,97.6 547.1,92.8 597.1,82.8 684.6,47.8 717.1,81.7 751.9,117.9 789,120 802,137.6 L803,-1.5 0,-1.5 Z"/>
+            </Path.Data>
+        </Path>
+
+        <Path x:Name="TopWave2" Fill="#FF3F5273" Height="148" Stretch="Fill" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="-69,-5,-63,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Data>
+                <PathGeometry Figures="M0,121.2 C54.1,135.5 96.1,146 104.9,116.1 117.6,73.2 199.8,115.5 249.8,110.5 273.7,108.1 306.3,89.5 332.2,69.7 362.6,46.3 408.2,51 429,66.9 468.9,97.4 467.8,109.6 517.8,99.6 567.8,89.6 719.5,11.6 722.7,58.5 725.9,105.2 789,120 802,137.6 L803,-1.5 0,-1.5 Z"/>
+            </Path.Data>
+        </Path>
+
+        <!-- Нижние волны -->
+        <Path x:Name="BottomWave1" Fill="#FFBDCCDB" Height="134" Stretch="Fill" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="-61,0,-118,11">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Data>
+                <PathGeometry Figures="M0,380 C24.9,372.5 56.7,391 80,376.6 102.7,362.5 137.3,346.4 162.4,343.9 212.4,338.9 239,352.6 264.7,337.4 290.6,322.1 301.4,329.2 351.4,334.2 401.4,339.2 429.9,355.4 477.3,339.3 530.5,321.1 603.9,308.4 649.1,332 688.5,352.6 750,370 804,372 L805,451 0,452 Z"/>
+            </Path.Data>
+        </Path>
+
+        <Path x:Name="BottomWave2" Fill="#FF3F5273" Height="140" Stretch="Fill" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="-65,0,-116,-26">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Data>
+                <PathGeometry Figures="M0,380 C24.9,372.5 66.3,400.8 83.2,382.1 101.1,362.2 148.3,358.9 174,351.7 219.1,339.2 249.4,368.7 275.1,353.5 301,338.2 304.8,322.3 343.4,343.7 387.3,368.1 429.9,355.4 477.3,339.3 530.5,321.1 611.6,317.8 638.1,353.4 653.9,374.7 687.9,357.1 723.2,368.7 747.9,376.8 782.3,371.2 804,372 L805,451 0,452 Z"/>
+            </Path.Data>
+        </Path>
     </Grid>
 </Window>
