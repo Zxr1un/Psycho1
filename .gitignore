@@ -7,7 +7,6 @@
 [Ll]og/
 
 # Build artifacts
-*.exe
 *.dll
 *.pdb
 
