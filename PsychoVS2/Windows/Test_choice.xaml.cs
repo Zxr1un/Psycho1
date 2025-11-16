@@ -19,6 +19,13 @@ namespace PsychoVS2.Windows
     /// </summary>
     public partial class Test_choice : Window
     {
+
+
+        /// <summary>
+        /// ----------------------------Егору----------------------
+        /// Если сильно задолбают надписи отладки, убери из события loaded здесь message box.
+        /// А из кнопки MainWindow команды на show test
+        /// </summary>
         public static DB_work db = new DB_work();
         public Test_choice()
         {

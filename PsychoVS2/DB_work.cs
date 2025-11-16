@@ -25,13 +25,14 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null)
+        public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null, string description = "No discription")
         {
             this.id = id;
             this.name = title;
             this.type = type;
             this.author = author;
             this.questions = questions;
+            this.description = description;
 
             // Загружаем картинку из БД
             if (imageData != null)
@@ -48,10 +49,13 @@ namespace PsychoVS2
 
                 this.image = LoadBitmapImage(File.ReadAllBytes(path));
             }
+
+            this.description = description;
         }
 
         public int id = -1;
         public string name;
+        public string description;
         public string type;
         public string author;
         public int amm_of_questions = 0;
