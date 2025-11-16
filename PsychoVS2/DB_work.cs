@@ -1,13 +1,14 @@
 ﻿using Microsoft.Data.Sqlite;
+using NCalc;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using NCalc;
-using System.IO;
+using System.Windows.Media.Imaging;
 
 
 namespace PsychoVS2
@@ -24,28 +25,56 @@ namespace PsychoVS2
     //Test storage
     public class Psycho_Test
     {
-
-        //для конкретного теста
         public Psycho_Test(int id, string title, string type = "none", string author = "none", List<Question> questions = null, byte[] imageData = null)
         {
             this.id = id;
             this.name = title;
             this.type = type;
             this.author = author;
-            this.questions = questions; //список вопросов
-            this.image = new MemoryStream(imageData); //Картинка для теста
+            this.questions = questions;
+
+            // Загружаем картинку из БД
+            if (imageData != null)
+            {
+                this.image = LoadBitmapImage(imageData);
+            }
+            else
+            {
+                string path = System.IO.Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "Images",
+                    "testImage2.png"
+                );
+
+                this.image = LoadBitmapImage(File.ReadAllBytes(path));
+            }
         }
 
-        public int id = -1; //id в БД
-        public string name; // Название
-        public string type; // Тип
-        public string author; // Автор
-        public int amm_of_questions = 0; // Количество вопросов в тесте
+        public int id = -1;
+        public string name;
+        public string type;
+        public string author;
+        public int amm_of_questions = 0;
 
-        public List<Question> questions; //список вопросов
-        MemoryStream image = null;
+        public List<Question> questions;
+        public BitmapImage image;
 
+        //Функция конвертации
+        private BitmapImage LoadBitmapImage(byte[] data)
+        {
+            using (var stream = new MemoryStream(data))
+            {
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.CacheOption = BitmapCacheOption.OnLoad; // Загружает полностью в память
+                bmp.StreamSource = stream;
+                bmp.EndInit();
+                bmp.Freeze(); // чтобы можно было спокойно использовать в UI из любого потока
+                return bmp;
+            }
+        }
     }
+
     //Question storage
     public class Question
     {
@@ -97,6 +126,7 @@ namespace PsychoVS2
         public Psycho_Test current_test = null;
 
         public string version = "3";
+        //"Data Source=Psycho1\\PsychoAT\\tests.db;Version=3;"
         private string dbPath = "Data Source=Psycho1\\PsychoAT\\tests.db;Version=3;";
         //that won't work, but latter it wil be correctly initialized
         private string connectionString = "";
@@ -127,7 +157,20 @@ namespace PsychoVS2
                         string title = reader["title"].ToString();
                         string type = reader["type"].ToString();
                         string author = reader["author"].ToString();
-                        byte[] image = (byte[])reader["image_data"];
+
+                        // Загружаем картинку из таблицы images
+                        byte[] image = null;
+                        using (SQLiteCommand imgCmd = new SQLiteCommand(
+                            "SELECT image_data FROM images WHERE test_id = @tid LIMIT 1", conn))
+                        {
+                            imgCmd.Parameters.AddWithValue("@tid", testId);
+
+                            object result = imgCmd.ExecuteScalar();
+                            if (result != DBNull.Value && result != null)
+                                image = (byte[])result;
+                        }
+
+
                         tests.Add(new Psycho_Test(testId, title, type, author, null, image));
 
                         using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
@@ -158,7 +201,21 @@ namespace PsychoVS2
                             string title = reader["title"].ToString();
                             string type = reader["type"].ToString();
                             string author = reader["author"].ToString();
-                            byte[] image = (byte[])reader["image_data"];
+
+
+                            // Загружаем картинку из таблицы images
+                            byte[] image = null;
+                            using (SQLiteCommand imgCmd = new SQLiteCommand(
+                                "SELECT image_data FROM images WHERE test_id = @tid LIMIT 1", conn))
+                            {
+                                imgCmd.Parameters.AddWithValue("@tid", testId);
+
+                                object result = imgCmd.ExecuteScalar();
+                                if (result != DBNull.Value && result != null)
+                                    image = (byte[])result;
+                            }
+
+
                             current_test = new Psycho_Test(testId, title, type, author, null, image);
 
                             using (SQLiteCommand countCmd = new SQLiteCommand("SELECT COUNT(*) FROM questions WHERE test_id = @id", conn))
@@ -296,6 +353,9 @@ namespace PsychoVS2
         {
             init_db_path();
             this.load_all_tests();
+            show_all_tests();
+            load_current_test(2);
+            show_current_test();
         }
     }
 }

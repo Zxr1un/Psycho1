@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Test_Start" Height="1174" Width="1653" Background="#FF3A454B" WindowStyle="None">
+        Title="Test_Start" Height="1174" Width="1653" Background="#FF3A454B" WindowStyle="None" Loaded="Window_Loaded">
     <Grid>
         <!-- Заголовок сверху по центру -->
         <Label Content="Тесты"
@@ -356,7 +356,7 @@
 
                                 <!-- Изображение -->
                                 <Image x:Name="Card_2_Image"
-                                    Source="D:\PHCHUR\testImage2.png"
+                                    Source="/Image/testImage2.png"
                                     Width="167" Height="200"
                                     HorizontalAlignment="Center" VerticalAlignment="Center"
                                     Stretch="Uniform"/>
