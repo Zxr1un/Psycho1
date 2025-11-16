@@ -3,7 +3,7 @@ git rm -r --cached bin obj .vs
 git commit -m "Remove ignored folders"
 
 
-Откат удалённого
+Откат удалённогоо
 
 git reset --hard *hash*
 git push origin main --force
