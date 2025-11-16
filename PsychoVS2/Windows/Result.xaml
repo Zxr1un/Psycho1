@@ -5,8 +5,405 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Result" Height="450" Width="800">
+        Title="Result" Height="920" Width="1530" WindowStyle="None"
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="#FF3A454B">
+
+    <Window.Resources>
+        <!-- Анимации -->
+        <Storyboard x:Key="FadeInAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                           From="0" To="1" Duration="0:0:1.5"/>
+        </Storyboard>
+
+        <Storyboard x:Key="SlideInAnimation">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                              From="0,50,0,0" To="0,0,0,0" Duration="0:0:0.8"/>
+        </Storyboard>
+
+        <Storyboard x:Key="PulseAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.05"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.05"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- Стили -->
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FFFCCC3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#357ABD"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.6" ShadowDepth="2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2C5F9E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#FFFCCC3C"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ResultLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#34495E"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="SectionTitleStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#2C3E50"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="InfoLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#7F8C8D"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        
+        <!-- Фон с градиентом -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF3A454B" Offset="0"/>
+                <GradientStop Color="#FF3D6175" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- Декоративные элементы -->
+        <Ellipse Width="200" Height="200" Fill="#4A90E2" Opacity="0.1" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="-100,-100,0,0"/>
+        <Ellipse Width="150" Height="150" Fill="#E74C3C" Opacity="0.1" 
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                 Margin="0,0,-75,-75"/>
+        <Rectangle Width="100" Height="100" Fill="#27AE60" Opacity="0.1" 
+                   HorizontalAlignment="Right" VerticalAlignment="Top" 
+                   Margin="0,50,-50,0" RadiusX="20" RadiusY="20"/>
+
+        <!-- Основной контент -->
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Заголовок -->
+            <Label Grid.Row="0" Content="Результаты теста" Style="{StaticResource TitleLabelStyle}"
+                   x:Name="TitleLabel">
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" Opacity="0.3" ShadowDepth="3"/>
+                </Label.Effect>
+            </Label>
+
+            <!-- Общие результаты -->
+            <Border Grid.Row="1" Background="White" Margin="0,20,0,0" 
+                    CornerRadius="15" Padding="20"
+                    x:Name="GeneralResultsBorder">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.2" ShadowDepth="5"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Общие результаты" Style="{StaticResource SectionTitleStyle}"/>
+
+                    <!-- Информация о тесте -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" 
+                                Margin="0,15,0,20">
+                        <!-- Блок типа теста -->
+                        <Border Background="#F8F9FA" CornerRadius="8" Padding="15" Margin="5">
+                            <StackPanel>
+                                <Label Content="Тип теста" Style="{StaticResource InfoLabelStyle}" 
+                                       FontWeight="Bold" Foreground="#2C3E50"/>
+                                <Label Content="Психологический тест личности" Style="{StaticResource InfoLabelStyle}" 
+                                       Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Вертикальная линия -->
+                        <Rectangle Width="1" Fill="#E9ECEF" Margin="10,0" VerticalAlignment="Stretch"/>
+
+                        <!-- Блок даты -->
+                        <Border Background="#F8F9FA" CornerRadius="8" Padding="15" Margin="5">
+                            <StackPanel>
+                                <Label Content="Дата прохождения" Style="{StaticResource InfoLabelStyle}" 
+                                       FontWeight="Bold" Foreground="#2C3E50"/>
+                                <Label Content="" Style="{StaticResource InfoLabelStyle}" 
+                                       Margin="0,5,0,0" x:Name="TestDateLabel"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Вертикальная линия -->
+                        <Rectangle Width="1" Fill="#E9ECEF" Margin="10,0" VerticalAlignment="Stretch"/>
+
+                        <!-- Блок результата -->
+                        <Border Background="#F8F9FA" CornerRadius="8" Padding="15" Margin="5">
+                            <StackPanel>
+                                <Label Content="Общий результат" Style="{StaticResource InfoLabelStyle}" 
+                                       FontWeight="Bold" Foreground="#2C3E50"/>
+                                <Label Content="85 баллов" Style="{StaticResource InfoLabelStyle}" 
+                                       Margin="0,5,0,0" FontWeight="Bold" Foreground="#27AE60"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Вертикальная линия -->
+                        <Rectangle Width="1" Fill="#E9ECEF" Margin="10,0" VerticalAlignment="Stretch"/>
+
+                        <!-- Блок уровня -->
+                        <Border Background="#F8F9FA" CornerRadius="8" Padding="15" Margin="5">
+                            <StackPanel>
+                                <Label Content="Уровень" Style="{StaticResource InfoLabelStyle}" 
+                                       FontWeight="Bold" Foreground="#2C3E50"/>
+                                <Label Content="Выше среднего" Style="{StaticResource InfoLabelStyle}" 
+                                       Margin="0,5,0,0" FontStyle="Italic"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+                        <!-- Авторы теста -->
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <Label Content="Авторы теста:" Style="{StaticResource InfoLabelStyle}" 
+                                   FontWeight="SemiBold" Margin="0,0,0,10" FontSize="16"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
+                                    <Label Content="Иванов А.П." Style="{StaticResource InfoLabelStyle}"/>
+                                </Border>
+                                <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
+                                    <Label Content="Петрова М.С." Style="{StaticResource InfoLabelStyle}"/>
+                                </Border>
+                                <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
+                                    <Label Content="Сидоров В.К." Style="{StaticResource InfoLabelStyle}"/>
+                                </Border>
+                                <Border Background="#F8F9FA" CornerRadius="6" Padding="10,5" Margin="3">
+                                    <Label Content="Козлова Е.Н." Style="{StaticResource InfoLabelStyle}"/>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Подробные результаты -->
+            <Border Grid.Row="3" Background="White" Margin="0,0,0,0" 
+                    CornerRadius="15" Padding="20"
+                    x:Name="DetailedResultsBorder">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.2" ShadowDepth="5"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Подробный анализ" Style="{StaticResource SectionTitleStyle}"/>
+
+                    <Grid Grid.Row="1" Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Текстовые результаты -->
+                        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,20,0">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel.Resources>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Margin" Value="0,0,0,8"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Label Content="• Показатель A: 90% - Отлично" Style="{StaticResource ResultLabelStyle}" 
+                                       HorizontalAlignment="Left" Foreground="#27AE60"/>
+                                <Label Content="• Показатель B: 75% - Хорошо" Style="{StaticResource ResultLabelStyle}" 
+                                       HorizontalAlignment="Left" Foreground="#4A90E2"/>
+                                <Label Content="• Показатель C: 60% - Удовлетворительно" Style="{StaticResource ResultLabelStyle}" 
+                                       HorizontalAlignment="Left" Foreground="#F39C12"/>
+                                <Label Content="• Показатель D: 45% - Требует внимания" Style="{StaticResource ResultLabelStyle}" 
+                                       HorizontalAlignment="Left" Foreground="#E74C3C"/>
+
+                                <!-- Результат - кем является пользователь -->
+                                <Border Background="#F8F9FA" CornerRadius="10" Padding="15" Margin="0,15,0,10">
+                                    <StackPanel>
+                                        <Label Content="Ваш психологический тип:" 
+                                               Style="{StaticResource ResultLabelStyle}" 
+                                               FontWeight="Bold" FontSize="18" 
+                                               Foreground="#2C3E50" HorizontalAlignment="Center"/>
+                                        <Label Content="Аналитик-стратег" 
+                                               Style="{StaticResource ResultLabelStyle}" 
+                                               FontSize="20" FontWeight="Bold" 
+                                               Foreground="#4A90E2" HorizontalAlignment="Center"
+                                               Margin="0,5,0,10"/>
+                                        <TextBlock Text="Вы обладаете развитым логическим мышлением и стратегическим подходом к решению задач. Ваши сильные стороны - анализ информации и планирование." 
+                                                   Foreground="#34495E" FontSize="16" 
+                                                   HorizontalAlignment="Left" TextWrapping="Wrap"
+                                                   Margin="0,5,0,0"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <TextBlock Text="Рекомендации: Продолжайте развивать аналитические навыки, уделяйте внимание эмоциональному интеллекту и практике командной работы." 
+                                           Foreground="#34495E" FontSize="16" 
+                                           HorizontalAlignment="Left" TextWrapping="Wrap"
+                                           Margin="0,15,0,0"/>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <!-- Разделитель -->
+                        <Rectangle Grid.Column="1" Width="1" Fill="#E9ECEF" Margin="10,0,10,0" 
+                                   VerticalAlignment="Stretch"/>
+
+                        <!-- График результатов -->
+                        <Border Grid.Column="2" Background="#F8F9FA" CornerRadius="10" Padding="15">
+                            <StackPanel>
+                                <Label Content="Визуализация результатов" 
+                                       Style="{StaticResource ResultLabelStyle}" 
+                                       FontWeight="Bold" FontSize="16" 
+                                       Foreground="#2C3E50" HorizontalAlignment="Center"
+                                       Margin="0,0,0,15"/>
+
+                                <!-- График -->
+                                <Grid Height="200" Margin="0,0,0,15">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Столбец 1 -->
+                                    <StackPanel Grid.Column="0" VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Center" Margin="10,0">
+                                        <Rectangle Width="30" Height="180" Fill="#27AE60" 
+                                                   RadiusX="5" RadiusY="5"
+                                                   x:Name="Bar1">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleY="0" CenterY="180"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Label Content="A: 90%" Style="{StaticResource InfoLabelStyle}" 
+                                               FontSize="12" Margin="0,5,0,0"/>
+                                    </StackPanel>
+
+                                    <!-- Столбец 2 -->
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Center" Margin="10,0">
+                                        <Rectangle Width="30" Height="150" Fill="#4A90E2" 
+                                                   RadiusX="5" RadiusY="5"
+                                                   x:Name="Bar2">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleY="0" CenterY="150"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Label Content="B: 75%" Style="{StaticResource InfoLabelStyle}" 
+                                               FontSize="12" Margin="0,5,0,0"/>
+                                    </StackPanel>
+
+                                    <!-- Столбец 3 -->
+                                    <StackPanel Grid.Column="2" VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Center" Margin="10,0">
+                                        <Rectangle Width="30" Height="120" Fill="#F39C12" 
+                                                   RadiusX="5" RadiusY="5"
+                                                   x:Name="Bar3">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleY="0" CenterY="120"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Label Content="C: 60%" Style="{StaticResource InfoLabelStyle}" 
+                                               FontSize="12" Margin="0,5,0,0"/>
+                                    </StackPanel>
+
+                                    <!-- Столбец 4 -->
+                                    <StackPanel Grid.Column="3" VerticalAlignment="Bottom" 
+                                                HorizontalAlignment="Center" Margin="10,0">
+                                        <Rectangle Width="30" Height="90" Fill="#E74C3C" 
+                                                   RadiusX="5" RadiusY="5"
+                                                   x:Name="Bar4">
+                                            <Rectangle.RenderTransform>
+                                                <ScaleTransform ScaleY="0" CenterY="90"/>
+                                            </Rectangle.RenderTransform>
+                                        </Rectangle>
+                                        <Label Content="D: 45%" Style="{StaticResource InfoLabelStyle}" 
+                                               FontSize="12" Margin="0,5,0,0"/>
+                                    </StackPanel>
+
+                                    <!-- Сетка графика -->
+                                    <Rectangle Grid.ColumnSpan="4" Fill="Transparent" Stroke="#E9ECEF" 
+                                               StrokeThickness="1" StrokeDashArray="2,2"/>
+                                </Grid>
+
+                                <TextBlock Text="Шкала результатов по различным показателям личности" 
+                                           Foreground="#7F8C8D" FontSize="12" 
+                                           HorizontalAlignment="Center" TextWrapping="Wrap"
+                                           TextAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- Кнопка выхода -->
+            <Button Grid.Row="5" Content="Выход" Style="{StaticResource ModernButtonStyle}" 
+                    HorizontalAlignment="Center" Padding="40,15"
+                    x:Name="ExitButton" Click="ExitButton_Click">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="8" Opacity="0.4" ShadowDepth="3"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
+
+        <!-- Декоративная верхняя панель -->
+        <Border Height="5" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#4A90E2" Offset="0"/>
+                    <GradientStop Color="#27AE60" Offset="0.5"/>
+                    <GradientStop Color="#E74C3C" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
     </Grid>
 </Window>

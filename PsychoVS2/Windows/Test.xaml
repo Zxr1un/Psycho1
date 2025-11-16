@@ -5,8 +5,426 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Test" Height="450" Width="800">
+        Title="Test" Height="920" Width="1530" WindowStyle="None" Background="#FF3A454B">
+
+    <Window.Resources>
+        <!-- Кнопка выхода -->
+        <Style x:Key="ExitButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FFFF6B6B"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="35,15"/>
+            <Setter Property="Content" Value="✕ Выйти"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE55C5C"/>
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Кнопка "Назад" -->
+        <Style x:Key="BackButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="#FFFCCC3C"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FFFCCC3C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="35,15"/>
+            <Setter Property="Content" Value="← Назад"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#20FCCC3C"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Кнопка "Далее" -->
+        <Style x:Key="NextButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FFFCCC3C"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="35,15"/>
+            <Setter Property="Content" Value="Далее →"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE6B82E"/>
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для кнопок ответов -->
+        <Style x:Key="AnswerButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FFFCCC3C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Padding" Value="35,30"/>
+            <Setter Property="Margin" Value="15,12"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="Center" 
+                                              Margin="15,0,0,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#33F6DE98" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#66F6DE98" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#66F6DE98"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для выбранного ответа -->
+        <Style x:Key="SelectedAnswerButtonStyle" TargetType="Button" BasedOn="{StaticResource AnswerButtonStyle}">
+            <Setter Property="Background" Value="#FFFCCC3C"/>
+            <Setter Property="BorderBrush" Value="#FFE6B82E"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <!-- Анимации для декоративных элементов -->
+        <Storyboard x:Key="FloatAnimation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="RotateAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation From="0" To="360" Duration="0:0:15" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="PulseAnimation" RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation From="0.8" To="1.2" Duration="0:0:4" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"/>
+            <DoubleAnimation From="0.8" To="1.2" Duration="0:0:4" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"/>
+        </Storyboard>
+    </Window.Resources>
+
     <Grid>
-        
+        <!-- Основной фон -->
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF2A354B" Offset="0"/>
+                    <GradientStop Color="#FF3A455B" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Анимированные декоративные элементы -->
+
+        <!-- Волны по бокам -->
+        <Path Data="M0,100 Q50,50 100,100 T200,100 T300,100 L300,300 L0,300 Z" 
+              Fill="#FFFCCC3C" Opacity="0.2"
+              HorizontalAlignment="Left" VerticalAlignment="Stretch"
+              Width="400" Margin="-200,0,0,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform Angle="-10"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <Path Data="M0,150 Q80,100 160,150 T320,150 T480,150 L480,350 L0,350 Z" 
+              Fill="#206A5ACD" Opacity="0.15"
+              HorizontalAlignment="Right" VerticalAlignment="Stretch"
+              Width="500" Margin="0,0,-250,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform Angle="15"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <!-- Плавающие круги -->
+        <Ellipse Width="120" Height="120" Fill="#FFFCCC3C" Opacity="0.3"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 Margin="100,100,0,0">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource FloatAnimation}"/>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+
+        <Ellipse Width="80" Height="80" Fill="#306A5ACD" Opacity="0.25"
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                 Margin="0,0,150,200">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="25"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+        </Ellipse>
+
+        <!-- Вращающиеся геометрические фигуры в центре -->
+        <Path Data="M0,0 L40,70 L-40,70 Z" Fill="#40FF6B6B" Opacity="0.2"
+              HorizontalAlignment="Center" VerticalAlignment="Center"
+              Margin="-300,0,0,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource RotateAnimation}"/>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <Path Data="M0,0 L50,0 L25,86.6 Z" Fill="#404CAF50" Opacity="0.2"
+              HorizontalAlignment="Center" VerticalAlignment="Center"
+              Margin="300,0,0,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource RotateAnimation}"/>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <!-- Пульсирующие элементы -->
+        <Rectangle Width="60" Height="60" Fill="#30FFFFFF" Opacity="0.1"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   Margin="0,400,0,0" RadiusX="15" RadiusY="15">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource PulseAnimation}"/>
+                </EventTrigger>
+            </Rectangle.Triggers>
+        </Rectangle>
+
+        <!-- Основной контент -->
+        <Grid Margin="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Верхняя панель с номером вопроса и кнопкой выхода -->
+            <Border Grid.Row="0" Background="#20FFFFFF" CornerRadius="12" Padding="20,15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Номер вопроса -->
+                    <Label Content="Вопрос 1 из 25" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="#FFFCCC3C"
+                           VerticalAlignment="Center"/>
+
+                    <!-- Прогресс -->
+                    <ProgressBar Grid.Column="1" 
+                                 Value="40" 
+                                 Maximum="100" 
+                                 Height="8" 
+                                 Margin="40,0,134,0"
+                                 VerticalAlignment="Center"
+                                 Foreground="#FFFCCC3C"
+                                 Background="#20FFFFFF">
+                        <ProgressBar.Effect>
+                            <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3" Color="#FFFCCC3C"/>
+                        </ProgressBar.Effect>
+                    </ProgressBar>
+
+                    <!-- Кнопка выхода -->
+                    <Button Grid.Column="1" 
+                            Style="{StaticResource ExitButtonStyle}"
+                            Click="ExitButton_Click" Margin="0,0,0,-3" HorizontalAlignment="Right" Width="81"/>
+                </Grid>
+            </Border>
+
+            <!-- Область вопроса и ответов -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,50,0,0">
+                <StackPanel>
+                    <!-- Вопрос -->
+                    <TextBlock Text="Как вы обычно реагируете на неожиданные изменения в планах?" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,60"
+                           Padding="20"
+                           LineHeight="32"/>
+
+                    <!-- Варианты ответов -->
+                    <ItemsControl x:Name="AnswersContainer" Margin="0,40,0,0" Height="226">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="2" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.Resources>
+                            <Style TargetType="Button" BasedOn="{StaticResource AnswerButtonStyle}"/>
+                        </ItemsControl.Resources>
+
+                        <Button Content="Принимаю их спокойно и адаптируюсь" 
+                                Click="AnswerButton_Click"/>
+                        <Button Content="Чувствую раздражение и сопротивление" 
+                                Click="AnswerButton_Click"/>
+                        <Button Content="Начинаю активно искать новые решения" 
+                                Click="AnswerButton_Click"/>
+                        <Button Content="Ощущаю тревогу и беспокойство" 
+                                Click="AnswerButton_Click"/>
+                        <Button Content="Вижу в этом новые возможности" 
+                                Click="AnswerButton_Click"/>
+                        <Button Content="Стараюсь вернуть всё как было" 
+                                Click="AnswerButton_Click"/>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Нижняя панель с навигацией -->
+            <Border Grid.Row="2" Background="Transparent" Padding="0,20,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto" MinWidth="139.293"/>
+                        <ColumnDefinition Width="Auto" MinWidth="147.19"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Индикатор выбранного ответа -->
+                    <Label Grid.Column="0" 
+                           Content="Выберите вариант ответа" 
+                           FontSize="14" 
+                           Foreground="#CCFFFFFF"
+                           VerticalAlignment="Center"
+                           x:Name="SelectionIndicator" Height="29"/>
+
+                    <!-- Кнопка назад -->
+                    <Button 
+                            Style="{StaticResource BackButtonStyle}"
+                            Margin="0,-16,20,0"
+                            Click="BackButton_Click" Grid.Column="1"/>
+
+                    <!-- Кнопка далее -->
+                    <Button Grid.Column="2" 
+                            Style="{StaticResource NextButtonStyle}"
+                            x:Name="NextButton"
+                            IsEnabled="False"
+                            Click="NextButton_Click" Margin="32,-16,0,0"/>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

@@ -5,8 +5,672 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PsychoVS2.Windows"
         mc:Ignorable="d"
-        Title="Test_Start" Height="450" Width="800">
-    <Grid>
+        Title="Test_choice" Height="800" Width="1000" WindowStyle="None"
+        Background="#FF3A454B">
+
+    <Window.Resources>
+
+        <!-- Анимации -->
+        <Storyboard x:Key="FloatAnimation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="RotateAnimation" RepeatBehavior="Forever">
+            <DoubleAnimation From="0" To="360" Duration="0:0:8" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"/>
+        </Storyboard>
+
+        <Storyboard x:Key="MoveAnimation" RepeatBehavior="Forever" AutoReverse="True">
+            <DoubleAnimation From="-20" To="20" Duration="0:0:3" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(TranslateTransform.X)"/>
+            <DoubleAnimation From="-10" To="10" Duration="0:0:5" 
+                           Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(TranslateTransform.Y)"/>
+        </Storyboard>
+
+        <!-- Стили для декоративных элементов -->
+        <Style x:Key="FloatingShapeStyle" TargetType="Shape">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource FloatAnimation}"/>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="RotatingShapeStyle" TargetType="Shape">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource RotateAnimation}"/>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MovingShapeStyle" TargetType="Shape">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard Storyboard="{StaticResource MoveAnimation}"/>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
         
+        <!-- Стиль для кнопок информации -->
+        <Style x:Key="InfoButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FFFCCC3C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="25,15"/>
+            <!-- Увеличены внутренние отступы: 25 по бокам, 15 сверху/снизу -->
+            <Setter Property="Margin" Value="5,4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#20FFFFFF"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FFE6B82E"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для кнопки начала теста -->
+        <Style x:Key="StartTestButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FFFCCC3C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="40,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFE6B82E"/>
+                                <!-- Менее яркий желтый -->
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.02" ScaleY="1.02"/>
+                                        <!-- Легкое увеличение -->
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="border" Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Анимированный фон -->
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF2A354B" Offset="0"/>
+                    <GradientStop Color="#FF3A455B" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Анимированные волны -->
+        <Path Data="M0,100 Q200,50 400,100 T800,100 L800,300 L0,300 Z" 
+              Fill="#FFFCCC3C" Opacity="0.3"
+              Style="{StaticResource MovingShapeStyle}"
+              HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+              Height="150" Margin="0,0,0,-50">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0" Y="0"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <Path Data="M0,150 Q300,100 600,150 T1200,150 L1200,350 L0,350 Z" 
+              Fill="#206A5ACD" Opacity="0.2"
+              Style="{StaticResource MovingShapeStyle}"
+              HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+              Height="120" Margin="100,0,0,-30">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="50" Y="10"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <!-- Геометрические фигуры с анимацией -->
+        <!-- Плавающие круги -->
+        <Ellipse Width="80" Height="80" Fill="#FFFCCC3C" Opacity="0.4" 
+                 Style="{StaticResource FloatingShapeStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="100,100,0,0"/>
+
+        <Ellipse Width="60" Height="60" Fill="#306A5ACD" Opacity="0.3" 
+                 Style="{StaticResource FloatingShapeStyle}"
+                 HorizontalAlignment="Right" VerticalAlignment="Top" 
+                 Margin="0,200,150,0"/>
+
+        <!-- Вращающиеся треугольники -->
+        <Path Data="M0,0 L40,70 L-40,70 Z" Fill="#40FF6B6B" Opacity="0.3"
+              Style="{StaticResource RotatingShapeStyle}"
+              HorizontalAlignment="Left" VerticalAlignment="Center"
+              Margin="450,0,0,0"/>
+
+        <Path Data="M0,0 L50,0 L25,86.6 Z" Fill="#404CAF50" Opacity="0.3"
+              Style="{StaticResource RotatingShapeStyle}"
+              HorizontalAlignment="Right" VerticalAlignment="Center"
+              Margin="0,60,400,0">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <!-- Движущиеся прямоугольники -->
+        <Rectangle Width="40" Height="40" Fill="#30FFA500" Opacity="0.3"
+                   Style="{StaticResource MovingShapeStyle}"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                   Margin="300,0,0,350" RadiusX="8" RadiusY="8"/>
+
+        <Rectangle Width="30" Height="30" Fill="#30FFFFFF" Opacity="0.2"
+                   Style="{StaticResource MovingShapeStyle}"
+                   HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   Margin="0,0,500,190" RadiusX="6" RadiusY="6"/>
+
+        <!-- Абстрактные формы -->
+        <Path Data="M0,20 Q20,0 40,20 T80,20 T120,20 L120,60 L0,60 Z" 
+              Fill="#20FFFFFF" Opacity="0.15"
+              Style="{StaticResource MovingShapeStyle}"
+              HorizontalAlignment="Center" VerticalAlignment="Top"
+              Height="40" Margin="0,300,0,0" Stretch="Uniform" Width="200">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform X="10" Y="5"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+        </Path>
+
+        <!-- Пульсирующие точки -->
+        <Ellipse Width="12" Height="12" Fill="#FFFCCC3C" Opacity="0.6"
+                 Style="{StaticResource FloatingShapeStyle}"
+                 HorizontalAlignment="Right" VerticalAlignment="Top"
+                 Margin="0,400,400,0"/>
+
+        <Ellipse Width="8" Height="8" Fill="#FF6A5ACD" Opacity="0.5"
+                 Style="{StaticResource FloatingShapeStyle}"
+                 HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                 Margin="350,0,0,200"/>
+
+        <!-- Декоративные элементы (должны быть ПЕРЕД основным контентом) -->
+        <Ellipse Width="200" Height="200" Fill="#406A5ACD" Opacity="0.4" 
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="-80,-80,0,0"/>
+        <Ellipse Width="150" Height="150" Fill="#40FF6B6B" Opacity="0.4" 
+                 HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                 Margin="0,0,-60,-60"/>
+
+        <!-- Дополнительные декоративные элементы -->
+        <Ellipse Width="120" Height="120" Fill="#3044D4A4" Opacity="0.3" 
+                 HorizontalAlignment="Right" VerticalAlignment="Top" 
+                 Margin="0,40,-60,0"/>
+        <Ellipse Width="100" Height="100" Fill="#30FFA500" Opacity="0.3" 
+                 HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                 Margin="-50,0,0,-50"/>
+
+        <!-- Основной контент -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая панель -->
+            <Border Grid.Column="0" Background="#FFF5F5F7" 
+                    Width="220" Margin="20,40,0,40"
+                    CornerRadius="12">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="3" Opacity="0.2" Direction="270"/>
+                </Border.Effect>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Кнопка назад -->
+                    <Button Grid.Row="0" 
+                            Width="72" Height="32" 
+                            Background="White" 
+                            BorderThickness="0"
+                            Margin="20,20,0,0" 
+                            HorizontalAlignment="Left"
+                            Click="BackButton_Click">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" 
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="#FFDDDDDD"
+                                        BorderThickness="1"
+                                        CornerRadius="16">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#FFF0F0F0"/>
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FF6A5ACD"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="←" FontSize="16" FontWeight="Bold" Foreground="#FF666666" Margin="0,0,4,2"/>
+                            <TextBlock Text="Назад" FontSize="12" Foreground="#FF666666" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Декоративный элемент -->
+                    <Ellipse Grid.Row="1" 
+                             Width="60" Height="60" 
+                             Fill="#106A5ACD" 
+                             Opacity="0.2"
+                             HorizontalAlignment="Center" 
+                             VerticalAlignment="Top"
+                             Margin="0,20,0,0"/>
+
+                    <!-- Информация в левой панели -->
+                    <ScrollViewer Grid.Row="1" 
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Margin="20,80,20,20"
+                                  Padding="0">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Трехфакторная модель психологического возраста:" 
+                                   FontSize="13" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="#FF333333"
+                                   HorizontalContentAlignment="Left"
+                                   Padding="0,5">
+                                <Label.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" 
+                                                   TextWrapping="Wrap" 
+                                                   TextAlignment="Left"/>
+                                    </DataTemplate>
+                                </Label.ContentTemplate>
+                            </Label>
+
+                            <StackPanel Orientation="Vertical" Margin="10,10,0,0">
+                                <Label Content="🎯 Позитивность" 
+                                       FontSize="12" 
+                                       Foreground="#FF666666"
+                                       Padding="0,3">
+                                    <Label.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" 
+                                                       TextWrapping="Wrap" 
+                                                       TextAlignment="Left"/>
+                                        </DataTemplate>
+                                    </Label.ContentTemplate>
+                                </Label>
+                                <Label Content="💫 Увлеченность" 
+                                       FontSize="12" 
+                                       Foreground="#FF666666"
+                                       Padding="0,3">
+                                    <Label.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" 
+                                                       TextWrapping="Wrap" 
+                                                       TextAlignment="Left"/>
+                                        </DataTemplate>
+                                    </Label.ContentTemplate>
+                                </Label>
+                                <Label Content="🚀 Открытость новому" 
+                                       FontSize="12" 
+                                       Foreground="#FF666666"
+                                       Padding="0,3">
+                                    <Label.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" 
+                                                       TextWrapping="Wrap" 
+                                                       TextAlignment="Left"/>
+                                        </DataTemplate>
+                                    </Label.ContentTemplate>
+                                </Label>
+                            </StackPanel>
+
+                            <!-- Дополнительная декоративная информация -->
+                            <Border Background="#FF6A5ACD" 
+                                    CornerRadius="8" 
+                                    Margin="0,20,0,0"
+                                    Padding="12,8">
+                                <Label Content="Узнайте свой внутренний возраст" 
+                                       FontSize="11" 
+                                       Foreground="White" 
+                                       FontWeight="Medium"
+                                       HorizontalContentAlignment="Center">
+                                    <Label.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" 
+                                                       TextWrapping="Wrap" 
+                                                       TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </Label.ContentTemplate>
+                                </Label>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Дополнительная информация внизу -->
+                    <Border Grid.Row="2" 
+                            Background="#FFFAFAFA" 
+                            CornerRadius="0,0,12,12"
+                            Padding="15,10">
+                        <Label Content="Тест разработан профессиональными психологами" 
+                               FontSize="9" 
+                               Foreground="#FF999999" 
+                               HorizontalAlignment="Center"
+                               HorizontalContentAlignment="Center">
+                            <Label.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" 
+                                               TextWrapping="Wrap" 
+                                               TextAlignment="Center"/>
+                                </DataTemplate>
+                            </Label.ContentTemplate>
+                        </Label>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!-- Центральная область между панелями -->
+            <Grid Grid.Column="1" 
+      VerticalAlignment="Top"
+      Margin="15,56,438,0"
+      Width="1000">
+
+                <!-- Информация о тесте -->
+                <StackPanel Orientation="Vertical" Margin="0,40,0,20">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="⏱ 15-20 минут" Style="{StaticResource InfoButtonStyle}" Width="152"/>
+                        <Button Content="❓ 25 вопросов" Style="{StaticResource InfoButtonStyle}" Width="156"/>
+                    </StackPanel>
+                    <Button Content="🧠 Психологический тест" 
+                Style="{StaticResource InfoButtonStyle}" 
+                HorizontalAlignment="Left"
+                Margin="4,2,0,0" Width="244"/>
+
+                    <StackPanel Orientation="Vertical" Margin="0,50,0,0">
+                        <Label Content="👥 Авторы теста" 
+           FontSize="16" 
+           FontWeight="Bold" 
+           Foreground="#FFFCCC3C" 
+           HorizontalContentAlignment="Left"
+           Margin="0,0,0,10"/>
+
+                        <!-- Автор 1 -->
+                        <Label Content="🧠 Иванов Александр Сергеевич"
+           FontSize="14"
+           FontWeight="SemiBold"
+           Foreground="#FFF5F5F5"
+           Padding="10,6"
+           Margin="0,5,0,5"
+           HorizontalAlignment="Left"
+           HorizontalContentAlignment="Left"
+           BorderBrush="#FF4FB3BF"
+           BorderThickness="1">
+                            <Label.Background>
+                                <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
+                            </Label.Background>
+                        </Label>
+
+                        <!-- Автор 2 -->
+                        <Label Content="🧠 Петрова Мария Алексеевна"
+           FontSize="14"
+           FontWeight="SemiBold"
+           Foreground="#FFF5F5F5"
+           Padding="10,6"
+           Margin="50,5,0,5"
+           HorizontalAlignment="Left"
+           HorizontalContentAlignment="Left"
+           BorderBrush="#FF4FB3BF"
+           BorderThickness="1">
+                            <Label.Background>
+                                <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
+                            </Label.Background>
+                        </Label>
+
+                        <!-- Автор 3 -->
+                        <Label Content="🧠 Смирнов Дмитрий Викторович"
+           FontSize="14"
+           FontWeight="SemiBold"
+           Foreground="#FFF5F5F5"
+           Padding="10,6"
+           Margin="0,5,0,5"
+           HorizontalAlignment="Left"
+           HorizontalContentAlignment="Left"
+           BorderBrush="#FF4FB3BF"
+           BorderThickness="1">
+                            <Label.Background>
+                                <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
+                            </Label.Background>
+                        </Label>
+
+                        <!-- Автор 4 -->
+                        <Label Content="🧠 Кузнецова Елена Владимировна"
+           FontSize="14"
+           FontWeight="SemiBold"
+           Foreground="#FFF5F5F5"
+           Padding="10,6"
+           Margin="50,5,0,5"
+           HorizontalAlignment="Left"
+           HorizontalContentAlignment="Left"
+           BorderBrush="#FF7BC9D2"
+           BorderThickness="1">
+                            <Label.Background>
+                                <SolidColorBrush Color="#FF7BC9D2" Opacity="0.4"/>
+                            </Label.Background>
+                        </Label>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Название теста (напротив первой ступени) -->
+                <Label Content="Шкала диагностики расстройств биполярного" 
+           FontSize="28" 
+           FontWeight="Bold" 
+           Foreground="White"
+           Margin="0,615,0,0"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"
+           HorizontalContentAlignment="Left"
+           VerticalContentAlignment="Top" Width="743">
+                    <Label.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Left"/>
+                        </DataTemplate>
+                    </Label.ContentTemplate>
+                </Label>
+
+                <!-- Описание теста (под названием, напротив второй ступени) -->
+                <Label Content= "Психологический возраст – это не просто модное понятие или очередной способ узнать что-то новое о себе. Это гораздо более глубокая характеристика, которая отражает ваш внутренний мир и психологическое состояние. В отличие от биологического или хронологического возраста, психологический возраст формируется под влиянием эмоциональных и социальных факторов, и он может значительно изменяться в зависимости от жизненных обстоятельств. Временами он молодеет, а порой может стареть, отражая ваш личный опыт, мировоззрение и внутреннюю гармонию.
+Почему важно знать свой психологический возраст? Этот параметр способен многое рассказать о вас. Он влияет на ваши увлечения, предпочтения, выбор целей и даже на то, как вы планируете свой досуг и строите взаимоотношения. В нашей трехфакторной модели психологического возраста выделены ключевые составляющие: позитивность, увлеченность и открытость новому опыту. Эти показатели помогают глубже понять себя, свои внутренние потребности и ресурсы.
+Определить свой психологический возраст можно с помощью онлайн."
+           FontSize="14" 
+           Foreground="#CCFFFFFF"
+           Margin="0,695,0,0"
+           VerticalAlignment="Top"
+           HorizontalContentAlignment="Left"
+           VerticalContentAlignment="Top" Width="850" HorizontalAlignment="Left">
+                    <Label.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" 
+                           TextWrapping="Wrap" 
+                           TextAlignment="Justify"/>
+                        </DataTemplate>
+                    </Label.ContentTemplate>
+                </Label>
+
+                <!-- Дополнительная информация -->
+                <StackPanel Orientation="Horizontal" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom"
+                Margin="0,880,0,0">
+                    <Label Content="🔒 Ваши ответы сохраняются анонимно" 
+               FontSize="11" 
+               Foreground="#99FFFFFF"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Правая панель с лесенкой -->
+            <Border Grid.Column="1" 
+                    Background="White" 
+                    CornerRadius="16"
+                    Margin="600,40,20,40"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.2"/>
+                </Border.Effect>
+
+
+                <Border.Clip>
+                    <GeometryGroup>
+                        <!-- Основной прямоугольник -->
+                        <RectangleGeometry Rect="0,0,1000,1000"/>
+
+                        <!-- Вырезаем увеличенные, поднятые и расширенные ступеньки -->
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <!-- Первая ступенька (поднята на 100px) -->
+                                <PathFigure StartPoint="0,630" IsClosed="True">
+                                    <LineSegment Point="140,630"/>
+                                    <ArcSegment Point="155,645"
+                        Size="15,15"
+                        RotationAngle="90"
+                        IsLargeArc="False"
+                        SweepDirection="Clockwise"/>
+                                    <LineSegment Point="155,690"/>
+                                    <LineSegment Point="0,690"/>
+                                </PathFigure>
+
+                                <!-- Вторая ступенька (сдвинута вверх на 20px) -->
+                                <PathFigure StartPoint="0,690" IsClosed="True">
+                                    <LineSegment Point="270,690"/>
+                                    <ArcSegment Point="285,705"
+                        Size="15,15"
+                        RotationAngle="90"
+                        IsLargeArc="False"
+                        SweepDirection="Clockwise"/>
+                                    <LineSegment Point="285,1000"/>
+                                    <LineSegment Point="0,1000"/>
+                                </PathFigure>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </GeometryGroup>
+                </Border.Clip>
+
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Картинка теста (занимает всю доступную площадь) -->
+                    <Border Grid.Row="0" 
+                            Background="#FFF8F8FF" 
+                            CornerRadius="16,16,0,0">
+                        <Image  Source="/Image/testImage2.png"
+                               Stretch="UniformToFill" 
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                    </Border>
+
+                    <!-- Кнопка начала теста -->
+                    <Button Grid.Row="1" 
+        Content="Начать тест" 
+        Style="{StaticResource StartTestButtonStyle}"
+        HorizontalAlignment="Center"
+        Margin="320,40,40,40"
+        VerticalAlignment="Bottom"
+        Width="200"
+        Height="50"
+        FontSize="18"
+        Click="StartTestButton_Click"/>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
