@@ -41,11 +41,27 @@ namespace PsychoVS2
             }
             else
             {
-                string path = System.IO.Path.Combine(
-                    AppDomain.CurrentDomain.BaseDirectory,
-                    "Images",
-                    "testImage2.png"
-                );
+                // Ищем корневую папку Psycho1
+                DirectoryInfo dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+                DirectoryInfo root = null;
+                while (dir != null)
+                {
+                    if (dir.Name.Equals("Psycho1", StringComparison.OrdinalIgnoreCase))
+                    {
+                        root = dir;
+                        break;
+                    }
+                    dir = dir.Parent;
+                }
+
+                if (root == null)
+                    throw new FileNotFoundException("Не удалось найти папку Psycho1!");
+
+                // Формируем путь к картинке
+                string path = Path.Combine(root.FullName, "PsychoVS2", "Image", "testImage2.png");
+
+                if (!File.Exists(path))
+                    throw new FileNotFoundException($"Файл не найден: {path}");
 
                 this.image = LoadBitmapImage(File.ReadAllBytes(path));
             }
@@ -136,13 +152,46 @@ namespace PsychoVS2
         private string connectionString = "";
         //command to connect
         //automatic search of PATH
+
+        //private void init_db_path()
+        //{
+        //    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+        //    dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
+        //    connectionString = $"Data Source={dbPath};Version={version};";
+        //    MessageBox.Show(connectionString);
+        //}
         private void init_db_path()
         {
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"tests.db");
+            string exeDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Ищем родительскую папку "Psycho1"
+            DirectoryInfo dir = new DirectoryInfo(exeDir);
+            DirectoryInfo root = null;
+
+            while (dir != null)
+            {
+                if (dir.Name.Equals("Psycho1", StringComparison.OrdinalIgnoreCase))
+                {
+                    root = dir;
+                    break;
+                }
+                dir = dir.Parent;
+            }
+
+            if (root == null)
+            {
+                MessageBox.Show("Не удалось найти папку Psycho1!");
+                return;
+            }
+
+            // Путь к tests.db внутри "Делатель тестов -3006"
+            string dbFolder = Path.Combine(root.FullName, "Делатель тестов -3006");
+            dbPath = Path.Combine(dbFolder, "tests.db");
+
             connectionString = $"Data Source={dbPath};Version={version};";
             MessageBox.Show(connectionString);
         }
+
 
         public void load_all_tests()
         {
