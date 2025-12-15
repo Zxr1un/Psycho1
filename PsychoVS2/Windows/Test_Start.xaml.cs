@@ -2,6 +2,7 @@
 using System.Reflection.Emit;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace PsychoVS2.Windows
 {
@@ -33,8 +34,9 @@ namespace PsychoVS2.Windows
             }
             else
                 this.Test_type.Visibility = Visibility.Hidden;
-            this.Name_label.Content = this.choosen_one.name;
-            this.Description_label.Content = this.choosen_one.description;
+            this.Name_label.Text = this.choosen_one.name;
+            this.Description_label.Document.Blocks.Clear();
+            this.Description_label.Document.Blocks.Add(new Paragraph(new Run(this.choosen_one.description)));
             string[] Authors = new string[4];
             this.choosen_one.author.Split('|').CopyTo(Authors, 0);
             for (int i = 0; i < 4; i++)

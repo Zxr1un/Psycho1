@@ -439,47 +439,54 @@
                 </StackPanel>
 
                 <!-- Название теста (напротив первой ступени) -->
-                <Label x:Name="Name_label" 
-                       Content="Шкала диагностики расстройств биполярного" 
-                       FontSize="28" 
-                       FontWeight="Bold" 
-                       Foreground="White"
-                       Margin="0,615,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       HorizontalContentAlignment="Left"
-                       VerticalContentAlignment="Top" 
-                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.743}">
-                    <Label.ContentTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}" 
-                                       TextWrapping="Wrap" 
-                                       TextAlignment="Left"/>
-                        </DataTemplate>
-                    </Label.ContentTemplate>
-                </Label>
+                <!-- Название теста (трёхстрочное, вытягивается только при необходимости) -->
+                <TextBlock x:Name="Name_label"
+           Text="Шкала диагностики расстройств биполярного"
+           FontSize="28"
+           FontWeight="Bold"
+           Foreground="White"
+           Margin="0,615,0,0"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Top"
+           TextWrapping="Wrap"
+           TextAlignment="Left"
+           Height="80"
+           MaxWidth="720" Width="720" ScrollViewer.CanContentScroll="True" UseLayoutRounding="False"/>
 
-                <!-- Описание теста (под названием, напротив второй ступени) -->
-                <Label x:Name="Description_label" 
-                       Content= "Психологический возраст – это не просто модное понятие или очередной способ узнать что-то новое о себе. Это гораздо более глубокая характеристика, которая отражает ваш внутренний мир и психологическое состояние. В отличие от биологического или хронологического возраста, психологический возраст формируется под влиянием эмоциональных и социальных факторов, и он может значительно изменяться в зависимости от жизненных обстоятельств. Временами он молодеет, а порой может стареть, отражая ваш личный опыт, мировоззрение и внутреннюю гармонию.
-Почему важно знать свой психологический возраст? Этот параметр способен многое рассказать о вас. Он влияет на ваши увлечения, предпочтения, выбор целей и даже на то, как вы планируете свой досуг и строите взаимоотношения. В нашей трехфакторной модели психологического возраста выделены ключевые составляющие: позитивность, увлеченность и открытость новому опыту. Эти показатели помогают глубже понять себя, свои внутренние потребности и ресурсы.
-Определить свой психологический возраст можно с помощью онлайн."
-                       FontSize="14" 
-                       Foreground="#CCFFFFFF"
-                       Margin="0,695,0,0"
-                       VerticalAlignment="Top"
-                       HorizontalContentAlignment="Left"
-                       VerticalContentAlignment="Top" 
-                       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource WidthPercentConverter}, ConverterParameter=0.85}" 
-                       HorizontalAlignment="Left">
-                    <Label.ContentTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding}" 
-                                       TextWrapping="Wrap" 
-                                       TextAlignment="Justify"/>
-                        </DataTemplate>
-                    </Label.ContentTemplate>
-                </Label>
+                <!-- Описание теста (RichTextBox со скроллом, только для чтения) -->
+                <RichTextBox x:Name="Description_label"
+             FontSize="14"
+             Foreground="#CCFFFFFF"
+             Margin="0,695,0,51"
+             VerticalAlignment="Top"
+             HorizontalAlignment="Left"
+             Width="830"
+             IsReadOnly="True"
+             VerticalScrollBarVisibility="Auto"
+             HorizontalScrollBarVisibility="Disabled"
+             Background="Transparent"
+             BorderThickness="0">
+                    <FlowDocument>
+                        <Paragraph TextAlignment="Justify">
+                            Психологический возраст – это не просто модное понятие или очередной способ узнать что-то новое о себе. 
+            Это гораздо более глубокая характеристика, которая отражает ваш внутренний мир и психологическое состояние. 
+            В отличие от биологического или хронологического возраста, психологический возраст формируется под влиянием 
+            эмоциональных и социальных факторов, и он может значительно изменяться в зависимости от жизненных обстоятельств. 
+            Временами он молодеет, а порой может стареть, отражая ваш личный опыт, мировоззрение и внутреннюю гармонию.
+                        </Paragraph>
+                        <Paragraph TextAlignment="Justify">
+                            Почему важно знать свой психологический возраст? Этот параметр способен многое рассказать о вас. 
+            Он влияет на ваши увлечения, предпочтения, выбор целей и даже на то, как вы планируете свой досуг 
+            и строите взаимоотношения. В нашей трехфакторной модели психологического возраста выделены ключевые 
+            составляющие: позитивность, увлеченность и открытость новому опыту. Эти показатели помогают глубже 
+            понять себя, свои внутренние потребности и ресурсы.
+                        </Paragraph>
+                        <Paragraph TextAlignment="Justify">
+                            Определить свой психологический возраст можно с помощью онлайн.
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+
                 <!-- Дополнительная информация -->
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Left" 
